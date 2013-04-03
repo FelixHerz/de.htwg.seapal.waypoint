@@ -203,5 +203,23 @@ public class Waypoint implements IWaypoint {
 	public void setMainsail(MainSail mainSail) {
 		this.mainSail = mainSail;
 	}
+	
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder("{");
+		sb.append("name=").append(name)
+		  	.append("name=").append(name)
+		  	.append("pos=").append(position)
+		  	.append("note=").append(note)
+		  	.append("btm=").append(btm)
+		  	.append("dtm=").append(dtm)
+		  	.append("cog=").append(cog)
+		  	.append("sog=").append(sog)
+		  	.append("man=").append(maneuver)
+		  	.append("fsail=").append(foreSail)
+		  	.append("msail=").append(mainSail)
+		  	.append("}");
+		return sb.toString();
+	}
 
 }

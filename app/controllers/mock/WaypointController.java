@@ -130,4 +130,10 @@ public class WaypointController extends util.observer.Observable implements IWay
 		waypoint.setMainsail(mainSail);
 		notifyObservers();
 	}
+	
+
+	@Override
+	public String getString() {
+		return "Waypoint:" + waypoint.toString();
+	}
 }

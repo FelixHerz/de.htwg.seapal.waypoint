@@ -51,5 +51,7 @@ public interface IWaypointController extends IObservable {
 	public abstract void setManeuver(Maneuver maneuver);
 
 	public abstract void setMainsail(MainSail mainSail);
+	
+	String getString();
 
 }
