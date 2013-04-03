@@ -1,188 +1,136 @@
 package controllers.mock;
 
+import java.util.Observable;
+
 import models.IMark;
 import models.IWaypoint;
 import controllers.IWaypointController;
 import models.IWaypoint.*;
 
-public class WaypointController implements IWaypointController {
+public class WaypointController extends Observable implements IWaypointController {
 
 	private IWaypoint waypoint;
 	
-	
-	/* (non-Javadoc)
-	 * @see controllers.mock.IWaypointController#getName()
-	 */
+	@Override
 	public String getName() {
 		return waypoint.getName();
 	}
 
-	/* (non-Javadoc)
-	 * @see controllers.mock.IWaypointController#getPosition()
-	 */
+	@Override
 	public String getPosition() {
-		return null;
+		return waypoint.getPosition();
 	}
 
-	/* (non-Javadoc)
-	 * @see controllers.mock.IWaypointController#getNote()
-	 */
+	@Override
 	public String getNote() {
-		return null;
+		return waypoint.getNote();
 	}
-	
-	/* (non-Javadoc)
-	 * @see controllers.mock.IWaypointController#getBTM()
-	 */
+
+	@Override
 	public int getBTM() {
-		return 0;
+		return waypoint.getBTM();
 	}
 
-	/* (non-Javadoc)
-	 * @see controllers.mock.IWaypointController#getDTM()
-	 */
+	@Override
 	public int getDTM() {
-		return 0;
+		return waypoint.getDTM();
 	}
 
-	/* (non-Javadoc)
-	 * @see controllers.mock.IWaypointController#getCOG()
-	 */
+	@Override
 	public int getCOG() {
-		return 0;
+		return waypoint.getCOG();
 	}
 
-	/* (non-Javadoc)
-	 * @see controllers.mock.IWaypointController#getSOG()
-	 */
+	@Override
 	public int getSOG() {
-		return 0;
+		return waypoint.getSOG();
 	}
 
-	/* (non-Javadoc)
-	 * @see controllers.mock.IWaypointController#getMark()
-	 */
+	@Override
 	public IMark getMark() {
-		return null;
+		return waypoint.getMark();
 	}
 
-	
-	
+	@Override
 	public Maneuver getManeuver() {
-		return null;
+		return waypoint.getManeuver();
 	}
 
-	
-	
+	@Override
 	public ForeSail getForesail() {
-		return null;
+		return waypoint.getForesail();
 	}
 
-	
-	
+	@Override
 	public MainSail getMainsail() {
-		return null;
+		return waypoint.getMainsail();
 	}
 
-	
-	
+	@Override
 	public void setForesail(ForeSail foreSail) {
-		// TODO Auto-generated method stub
-		
+		waypoint.setForesail(foreSail);
+		notifyObservers();
 	}
 
-	/* (non-Javadoc)
-	 * @see controllers.mock.IWaypointController#setName(java.lang.String)
-	 */
-	
-	
+	@Override
 	public void setName(String name) {
-		// TODO Auto-generated method stub
+		waypoint.setName(name);
+		notifyObservers();
 		
 	}
 
-	/* (non-Javadoc)
-	 * @see controllers.mock.IWaypointController#setPosition(java.lang.String)
-	 */
-	
-	
+	@Override
 	public void setPosition(String position) {
-		// TODO Auto-generated method stub
-		
+		waypoint.setPosition(position);
+		notifyObservers();
 	}
 
-	/* (non-Javadoc)
-	 * @see controllers.mock.IWaypointController#setNote(java.lang.String)
-	 */
-	
-	
+	@Override
 	public void setNote(String note) {
-		// TODO Auto-generated method stub
-		
+		waypoint.setNote(note);
+		notifyObservers();
 	}
 
-	/* (non-Javadoc)
-	 * @see controllers.mock.IWaypointController#setBTM(int)
-	 */
-	
-	
+	@Override
 	public void setBTM(int btm) {
-		// TODO Auto-generated method stub
-		
+		waypoint.setBTM(btm);
+		notifyObservers();
 	}
 
-	/* (non-Javadoc)
-	 * @see controllers.mock.IWaypointController#setDTM(int)
-	 */
-	
-	
+	@Override
 	public void setDTM(int dtm) {
-		// TODO Auto-generated method stub
-		
+		waypoint.setDTM(dtm);
+		notifyObservers();
 	}
 
-	/* (non-Javadoc)
-	 * @see controllers.mock.IWaypointController#setCOG(int)
-	 */
-	
-	
+	@Override
 	public void setCOG(int cog) {
-		// TODO Auto-generated method stub
-		
+		waypoint.setCOG(cog);
+		notifyObservers();
 	}
 
-	/* (non-Javadoc)
-	 * @see controllers.mock.IWaypointController#setSOG(int)
-	 */
-	
-	
+	@Override
 	public void setSOG(int sog) {
-		// TODO Auto-generated method stub
-		
+		waypoint.setSOG(sog);
+		notifyObservers();
 	}
 
-	/* (non-Javadoc)
-	 * @see controllers.mock.IWaypointController#setMark(models.IMark)
-	 */
-	
-	
+	@Override
 	public void setMark(IMark mark) {
-		// TODO Auto-generated method stub
-		
+		waypoint.setMark(mark);
+		notifyObservers();
 	}
 
-	
-	
+	@Override
 	public void setManeuver(Maneuver maneuver) {
-		// TODO Auto-generated method stub
-		
+		waypoint.setManeuver(maneuver);
+		notifyObservers();		
 	}
 
-	
-	
+	@Override
 	public void setMainsail(MainSail mainSail) {
-		// TODO Auto-generated method stub
-		
+		waypoint.setMainsail(mainSail);
+		notifyObservers();
 	}
 
 }
