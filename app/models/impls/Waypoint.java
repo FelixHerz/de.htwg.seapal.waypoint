@@ -5,9 +5,6 @@ import models.IWaypoint;
 
 public class Waypoint implements IWaypoint {
 
-
-	
-
 	private String name;
 	private String position;
 	private String note;

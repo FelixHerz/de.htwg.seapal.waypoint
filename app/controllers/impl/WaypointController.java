@@ -1,6 +1,5 @@
 package controllers.impl;
 
-import java.util.Observable;
 
 import models.IMark;
 import models.IWaypoint;
@@ -9,7 +8,7 @@ import models.IWaypoint.MainSail;
 import models.IWaypoint.Maneuver;
 import controllers.IWaypointController;
 
-public class WaypointController extends Observable implements IWaypointController {
+public class WaypointController extends util.observer.Observable implements IWaypointController {
 
 	private IWaypoint waypoint;
 	
@@ -134,5 +133,4 @@ public class WaypointController extends Observable implements IWaypointControlle
 		waypoint.setMainsail(mainSail);
 		notifyObservers();
 	}
-
 }

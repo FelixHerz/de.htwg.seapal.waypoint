@@ -62,67 +62,57 @@ public class Waypoint implements IWaypoint {
 
 	@Override
 	public void setForesail(ForeSail foreSail) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 
 	@Override
 	public void setName(String name) {
-		// TODO Auto-generated method stub
-		
+			
 	}
 
 	@Override
 	public void setPosition(String position) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void setNote(String note) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void setBTM(int btm) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void setDTM(int dtm) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void setCOG(int cog) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void setSOG(int sog) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void setMark(IMark mark) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void setManeuver(Maneuver maneuver) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void setMainsail(MainSail mainSail) {
-		// TODO Auto-generated method stub
 		
 	}
 

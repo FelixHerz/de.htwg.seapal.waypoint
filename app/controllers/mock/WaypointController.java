@@ -1,13 +1,11 @@
 package controllers.mock;
 
-import java.util.Observable;
-
 import models.IMark;
 import models.IWaypoint;
 import controllers.IWaypointController;
 import models.IWaypoint.*;
 
-public class WaypointController extends Observable implements IWaypointController {
+public class WaypointController extends util.observer.Observable implements IWaypointController {
 
 	private IWaypoint waypoint;
 	
@@ -132,5 +130,4 @@ public class WaypointController extends Observable implements IWaypointControlle
 		waypoint.setMainsail(mainSail);
 		notifyObservers();
 	}
-
 }

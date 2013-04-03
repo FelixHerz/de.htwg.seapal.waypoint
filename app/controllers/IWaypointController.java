@@ -1,9 +1,12 @@
 package controllers;
 
+
+import util.observer.IObservable;
+
 import models.IMark;
 import models.IWaypoint.*;
 
-public interface IWaypointController {
+public interface IWaypointController extends IObservable {
 
 	public abstract String getName();
 
