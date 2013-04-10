@@ -3,11 +3,10 @@ package views.tui;
 import java.util.Scanner;
 
 
-import util.observer.Event;
-import util.observer.IObserver;
-
-import controllers.IWaypointController;
-import models.IWaypoint.*;
+import de.htwg.seapal.waypoint.controllers.IWaypointController;
+import de.htwg.seapal.waypoint.models.IWaypoint.*;
+import de.htwg.util.observer.Event;
+import de.htwg.util.observer.IObserver;
 
 public class WaypointTUI implements IObserver {
 	

@@ -1,10 +1,10 @@
-package controllers;
+package de.htwg.seapal.waypoint.controllers;
 
 
-import util.observer.IObservable;
+import de.htwg.seapal.waypoint.models.IMark;
+import de.htwg.seapal.waypoint.models.IWaypoint.*;
+import de.htwg.util.observer.IObservable;
 
-import models.IMark;
-import models.IWaypoint.*;
 
 public interface IWaypointController extends IObservable {
 

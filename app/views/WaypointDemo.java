@@ -3,10 +3,10 @@ package views;
 import java.util.Scanner;
 
 import views.tui.WaypointTUI;
-import controllers.IWaypointController;
-import controllers.impl.WaypointController;
-import models.IWaypoint;
-import models.impls.Waypoint;
+import de.htwg.seapal.waypoint.controllers.IWaypointController;
+import de.htwg.seapal.waypoint.controllers.impl.WaypointController;
+import de.htwg.seapal.waypoint.models.IWaypoint;
+import de.htwg.seapal.waypoint.models.impls.Waypoint;
 
 public class WaypointDemo {
 

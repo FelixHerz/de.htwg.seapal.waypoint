@@ -1,13 +1,21 @@
-package controllers.mock;
+package de.htwg.seapal.waypoint.controllers.impl;
 
-import models.IMark;
-import models.IWaypoint;
-import controllers.IWaypointController;
-import models.IWaypoint.*;
 
-public class WaypointController extends util.observer.Observable implements IWaypointController {
+import de.htwg.seapal.waypoint.controllers.IWaypointController;
+import de.htwg.seapal.waypoint.models.IMark;
+import de.htwg.seapal.waypoint.models.IWaypoint;
+import de.htwg.seapal.waypoint.models.IWaypoint.ForeSail;
+import de.htwg.seapal.waypoint.models.IWaypoint.MainSail;
+import de.htwg.seapal.waypoint.models.IWaypoint.Maneuver;
+import de.htwg.util.observer.Observable;
+
+public class WaypointController extends Observable implements IWaypointController {
 
 	private IWaypoint waypoint;
+	
+	public WaypointController(IWaypoint waypoint) {
+		this.waypoint = waypoint;
+	}
 	
 	@Override
 	public String getName() {
@@ -130,7 +138,6 @@ public class WaypointController extends util.observer.Observable implements IWay
 		waypoint.setMainsail(mainSail);
 		notifyObservers();
 	}
-	
 
 	@Override
 	public String getString() {

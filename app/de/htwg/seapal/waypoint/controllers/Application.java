@@ -1,4 +1,4 @@
-package controllers;
+package de.htwg.seapal.waypoint.controllers;
 
 import play.*;
 import play.mvc.*;

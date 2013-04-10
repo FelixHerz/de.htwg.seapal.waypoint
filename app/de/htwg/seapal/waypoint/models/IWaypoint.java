@@ -1,4 +1,4 @@
-package models;
+package de.htwg.seapal.waypoint.models;
 
 public interface IWaypoint {
 

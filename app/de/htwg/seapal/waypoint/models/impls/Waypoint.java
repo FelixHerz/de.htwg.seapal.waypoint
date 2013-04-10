@@ -1,7 +1,7 @@
-package models.impls;
+package de.htwg.seapal.waypoint.models.impls;
 
-import models.IMark;
-import models.IWaypoint;
+import de.htwg.seapal.waypoint.models.IMark;
+import de.htwg.seapal.waypoint.models.IWaypoint;
 
 public class Waypoint implements IWaypoint {
 
