@@ -1,5 +1,7 @@
 package de.htwg.seapal.waypoint.models;
 
+import de.htwg.seapal.mark.models.IMark;
+
 public interface IWaypoint {
 
 	enum Maneuver {

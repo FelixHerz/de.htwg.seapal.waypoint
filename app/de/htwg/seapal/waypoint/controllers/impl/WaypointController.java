@@ -2,7 +2,7 @@ package de.htwg.seapal.waypoint.controllers.impl;
 
 
 import de.htwg.seapal.waypoint.controllers.IWaypointController;
-import de.htwg.seapal.waypoint.models.IMark;
+import de.htwg.seapal.mark.models.IMark;
 import de.htwg.seapal.waypoint.models.IWaypoint;
 import de.htwg.seapal.waypoint.models.IWaypoint.ForeSail;
 import de.htwg.seapal.waypoint.models.IWaypoint.MainSail;

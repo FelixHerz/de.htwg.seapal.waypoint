@@ -1,7 +1,7 @@
 package de.htwg.seapal.waypoint.controllers;
 
 
-import de.htwg.seapal.waypoint.models.IMark;
+import de.htwg.seapal.mark.models.IMark;
 import de.htwg.seapal.waypoint.models.IWaypoint.*;
 import de.htwg.util.observer.IObservable;
 

@@ -1,6 +1,6 @@
 package de.htwg.seapal.waypoint.models.mocks;
 
-import de.htwg.seapal.waypoint.models.IMark;
+import de.htwg.seapal.mark.models.IMark;
 import de.htwg.seapal.waypoint.models.IWaypoint;
 
 public class Waypoint implements IWaypoint {
