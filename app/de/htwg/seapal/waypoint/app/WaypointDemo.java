@@ -1,4 +1,4 @@
-package de.htwag.seapal.waypoint.app;
+package de.htwg.seapal.waypoint.app;
 
 import java.util.Scanner;
 
