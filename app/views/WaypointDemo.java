@@ -6,7 +6,7 @@ import views.tui.WaypointTUI;
 import de.htwg.seapal.waypoint.controllers.IWaypointController;
 import de.htwg.seapal.waypoint.controllers.impl.WaypointController;
 import de.htwg.seapal.waypoint.models.IWaypoint;
-import de.htwg.seapal.waypoint.models.impls.Waypoint;
+import de.htwg.seapal.waypoint.models.impl.Waypoint;
 
 public class WaypointDemo {
 

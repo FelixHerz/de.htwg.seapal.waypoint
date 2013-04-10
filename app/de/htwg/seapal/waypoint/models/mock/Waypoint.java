@@ -1,4 +1,4 @@
-package de.htwg.seapal.waypoint.models.mocks;
+package de.htwg.seapal.waypoint.models.mock;
 
 import de.htwg.seapal.mark.models.IMark;
 import de.htwg.seapal.waypoint.models.IWaypoint;

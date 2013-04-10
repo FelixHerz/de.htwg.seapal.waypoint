@@ -1,4 +1,4 @@
-package de.htwg.seapal.waypoint.models.impls;
+package de.htwg.seapal.waypoint.models.impl;
 
 import de.htwg.seapal.mark.models.IMark;
 import de.htwg.seapal.waypoint.models.IWaypoint;
