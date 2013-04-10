@@ -7,8 +7,9 @@ import de.htwg.seapal.waypoint.controllers.IWaypointController;
 import de.htwg.seapal.waypoint.models.IWaypoint.*;
 import de.htwg.util.observer.Event;
 import de.htwg.util.observer.IObserver;
+import de.htwg.util.plugin.Plugin;
 
-public class WaypointTUI implements IObserver {
+public class WaypointTUI implements IObserver, Plugin {
 	
 	private IWaypointController controller;
 	private Scanner scanner = new Scanner(System.in);
@@ -80,5 +81,17 @@ public class WaypointTUI implements IObserver {
 				"");
 		System.out.println(controller.getString());
 		
+	}
+
+	@Override
+	public String getMenuEntry() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public char getMenuKey() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
