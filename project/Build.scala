@@ -27,7 +27,7 @@ object ApplicationBuild extends Build {
 	crossPaths := false, 
 
 	resolvers += "HTWG Resolver" at "http://lenny2.in.htwg-konstanz.de:8081/artifactory/libs-snapshot-local",	
-	publishTo := Some(	"HTWG Publisher" at "http://lenny2.in.htwgkonstanz.de:8081/artifactory/libs-snapshot-local;build.timestamp=" + 
+	publishTo := Some("HTWG Publisher" at "http://lenny2.in.htwgkonstanz.de:8081/artifactory/libs-snapshot-local;build.timestamp=" + 
 	new java.util.Date().getTime()),
 		pomExtra :=
 			<build>
