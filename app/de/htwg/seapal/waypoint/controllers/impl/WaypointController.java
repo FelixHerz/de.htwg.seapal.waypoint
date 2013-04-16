@@ -1,6 +1,9 @@
 package de.htwg.seapal.waypoint.controllers.impl;
 
 
+import com.google.inject.Inject;
+import com.google.inject.Singleton;
+
 import de.htwg.seapal.waypoint.controllers.IWaypointController;
 import de.htwg.seapal.mark.models.IMark;
 import de.htwg.seapal.waypoint.models.IWaypoint;
@@ -9,10 +12,12 @@ import de.htwg.seapal.waypoint.models.IWaypoint.MainSail;
 import de.htwg.seapal.waypoint.models.IWaypoint.Maneuver;
 import de.htwg.util.observer.Observable;
 
+@Singleton
 public class WaypointController extends Observable implements IWaypointController {
 
 	private IWaypoint waypoint;
 	
+	@Inject
 	public WaypointController(IWaypoint waypoint) {
 		this.waypoint = waypoint;
 	}

@@ -129,6 +129,8 @@ public class Waypoint implements IWaypoint {
 	 */
 	@Override
 	public void setName(String name) {
+		if (name == null || name.equals(""))
+			throw new IllegalArgumentException();
 		this.name = name;
 	}
 
@@ -137,6 +139,12 @@ public class Waypoint implements IWaypoint {
 	 */
 	@Override
 	public void setPosition(String position) {
+		position = position.trim();
+		if (position == null || position.equals(""))
+			throw new IllegalArgumentException();
+		if (!position.matches("((1[0-8][0-9])|(0?\\d{0,2}))°(\\d{1,2}')?(\\d{1,2}\")?[E|W]\\s?" +
+				"((90)|([0-8]\\d|\\d))°(\\d{1,2}')?(\\d{1,2}\")?[N|S]"))
+			throw new IllegalArgumentException(position);
 		this.position = position;
 	}
 
@@ -208,16 +216,15 @@ public class Waypoint implements IWaypoint {
 	public String toString() {
 		StringBuilder sb = new StringBuilder("{");
 		sb.append("name=").append(name)
-		  	.append("name=").append(name)
-		  	.append("pos=").append(position)
-		  	.append("note=").append(note)
-		  	.append("btm=").append(btm)
-		  	.append("dtm=").append(dtm)
-		  	.append("cog=").append(cog)
-		  	.append("sog=").append(sog)
-		  	.append("man=").append(maneuver)
-		  	.append("fsail=").append(foreSail)
-		  	.append("msail=").append(mainSail)
+		  	.append("; pos=").append(position)
+		  	.append("; note=").append(note)
+		  	.append("; btm=").append(btm)
+		  	.append("; dtm=").append(dtm)
+		  	.append("; cog=").append(cog)
+		  	.append("; sog=").append(sog)
+		  	.append("; man=").append(maneuver)
+		  	.append("; fsail=").append(foreSail)
+		  	.append("; msail=").append(mainSail)
 		  	.append("}");
 		return sb.toString();
 	}

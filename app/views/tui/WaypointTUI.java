@@ -2,6 +2,8 @@ package views.tui;
 
 import java.util.Scanner;
 
+import com.google.inject.Inject;
+
 
 import de.htwg.seapal.waypoint.controllers.IWaypointController;
 import de.htwg.seapal.waypoint.models.IWaypoint.*;
@@ -12,8 +14,8 @@ import de.htwg.util.plugin.Plugin;
 public class WaypointTUI implements IObserver, Plugin {
 	
 	private IWaypointController controller;
-	private Scanner scanner = new Scanner(System.in);
 	
+	@Inject
 	public WaypointTUI(IWaypointController controller) {
 		this.controller = controller;
 		this.controller.addObserver(this);
@@ -25,48 +27,54 @@ public class WaypointTUI implements IObserver, Plugin {
 	}
 	
 	public boolean processInputLine(String line) {
+
+		Scanner scanner = new Scanner(line);
+		scanner.useDelimiter(" ");
+		String input = scanner.next();
 		boolean continu = true;
-		if (line.equalsIgnoreCase("q")) {
+		if (input.equalsIgnoreCase("q")) {
 			continu = false;
 		}
-		if (line.equalsIgnoreCase("name")) {
+		if (input.equalsIgnoreCase("name")) {
 			controller.setName(scanner.next());
 		}
-		if (line.equalsIgnoreCase("pos")) {
+		if (input.equalsIgnoreCase("pos")) {
 			controller.setPosition(scanner.next());
 		}
-		if (line.equalsIgnoreCase("note")) {
+		if (input.equalsIgnoreCase("note")) {
 			controller.setNote(scanner.next());
 		}
-		if (line.equalsIgnoreCase("btm")) {
+		if (input.equalsIgnoreCase("btm")) {
 			controller.setBTM(scanner.nextInt());
 		}
-		if (line.equalsIgnoreCase("dtm")) {
+		if (input.equalsIgnoreCase("dtm")) {
 			controller.setDTM(scanner.nextInt());
 		}
-		if (line.equalsIgnoreCase("cog")) {
+		if (input.equalsIgnoreCase("cog")) {
 			controller.setCOG(scanner.nextInt());
 		}
-		if (line.equalsIgnoreCase("sog")) {
+		if (input.equalsIgnoreCase("sog")) {
 			controller.setSOG(scanner.nextInt());
 		}
-		if (line.equalsIgnoreCase("man")) {
+		if (input.equalsIgnoreCase("man")) {
 			controller.setManeuver(Maneuver.valueOf(scanner.next()));
 		}
-		if (line.equalsIgnoreCase("fsail")) {
+		if (input.equalsIgnoreCase("fsail")) {
 			controller.setForesail(ForeSail.valueOf(scanner.next()));
 		}
-		if (line.equalsIgnoreCase("msail")) {
+		if (input.equalsIgnoreCase("msail")) {
 			controller.setMainsail(MainSail.valueOf(scanner.next()));
 		}
-		if (line.equalsIgnoreCase("mark")) {
+		if (input.equalsIgnoreCase("mark")) {
 //			controller.setMark(scanner.next());
 		}
 		return continu;
 	}	
 	
 	public void printTUI() {
-		System.out.println("WaypointDemo: q - quit\n" +
+		System.out.println(controller.getString());
+		System.out.println("WaypointDemo:" +
+				"\t\t q - quit\n" +
 				"\t\t name  - set name\n" +
 				"\t\t pos   - set position\n" +
 				"\t\t note  - set note\n" +
@@ -77,21 +85,17 @@ public class WaypointTUI implements IObserver, Plugin {
 				"\t\t man   - set maneuver\n" +
 				"\t\t fsail - set foresail\n" +
 				"\t\t msail - set mainsail\n" +
-				"\t\t mark  - set mark\n" +
-				"");
-		System.out.println(controller.getString());
+				"\t\t mark  - set mark");
 		
 	}
 
 	@Override
 	public String getMenuEntry() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public char getMenuKey() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 }
