@@ -5,6 +5,7 @@ import de.htwg.seapal.waypoint.models.IWaypoint;
 
 public class Waypoint implements IWaypoint {
 
+	private String id;
 	private String name;
 	private String position;
 	private String note;
@@ -139,9 +140,9 @@ public class Waypoint implements IWaypoint {
 	 */
 	@Override
 	public void setPosition(String position) {
-		position = position.trim();
 		if (position == null || position.equals(""))
 			throw new IllegalArgumentException();
+		position = position.trim();
 		if (!position.matches("((1[0-8][0-9])|(0?\\d{0,2}))°(\\d{1,2}')?(\\d{1,2}\")?[E|W]\\s?" +
 				"((90)|([0-8]\\d|\\d))°(\\d{1,2}')?(\\d{1,2}\")?[N|S]"))
 			throw new IllegalArgumentException(position);
@@ -227,6 +228,11 @@ public class Waypoint implements IWaypoint {
 		  	.append("; msail=").append(mainSail)
 		  	.append("}");
 		return sb.toString();
+	}
+
+	@Override
+	public String getId() {
+		return id;
 	}
 
 }

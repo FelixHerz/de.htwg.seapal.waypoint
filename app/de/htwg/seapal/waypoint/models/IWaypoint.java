@@ -60,4 +60,6 @@ public interface IWaypoint {
 
 	 void setMainsail(MainSail mainSail);
 
+	 String getId();
+
 }
