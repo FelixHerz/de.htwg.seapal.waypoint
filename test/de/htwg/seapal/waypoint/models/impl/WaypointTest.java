@@ -6,6 +6,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import de.htwg.seapal.waypoint.models.IWaypoint;
+import de.htwg.seapal.waypoint.models.IWaypoint.ForeSail;
+import de.htwg.seapal.waypoint.models.IWaypoint.MainSail;
+import de.htwg.seapal.waypoint.models.IWaypoint.Maneuver;
 
 public class WaypointTest {
 
@@ -22,28 +25,14 @@ public class WaypointTest {
 		assertEquals("Waypoint 1", waypoint.getName());
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void testNameEmpty() {
-		try {
 			waypoint.setName("");
-			fail();
-		} catch (IllegalArgumentException e) {
-			
-		} catch (Exception e) {
-			fail();
-		}
 	}
 
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void testNameNull() {
-		try {
 			waypoint.setName(null);
-			fail();
-		} catch (IllegalArgumentException e) {
-			
-		} catch (Exception e) {
-			fail();
-		}
 	}
 
 
@@ -61,28 +50,14 @@ public class WaypointTest {
 		assertEquals("0°E 47°N", waypoint.getPosition());
 	}
 	
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void testPositionWrong() {
-		try {
-			waypoint.setPosition("0°12'12\"E ");
-			fail("Setting a wrong Position");
-		} catch (IllegalArgumentException iae) {
-			
-		} catch (Exception e) {
-			fail();
-		}
+		waypoint.setPosition("0°12'12\"E ");
 	}
 	
-	@Test
+	@Test(expected = IllegalArgumentException.class)
 	public void testPositionNull() {
-		try {
-			waypoint.setPosition(null);
-			fail("Setting a null Position");
-		} catch (IllegalArgumentException iae) {
-			
-		} catch (Exception e) {
-			fail();
-		}
+		waypoint.setPosition(null);
 	}
 
 	@Test
@@ -109,18 +84,39 @@ public class WaypointTest {
 	public void testMark() {
 	}
 
+	
 	@Test
 	public void testForesail() {
+		waypoint.setForesail(ForeSail.FOCK);
+		assertEquals(ForeSail.FOCK, waypoint.getForesail());
 	}
-	
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testForesailNull() {
+		waypoint.setForesail(null);
+	}
 
 	@Test
 	public void testMainsail() {
+		waypoint.setMainsail(MainSail.FULL);
+		assertEquals(MainSail.FULL, waypoint.getMainsail());
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testMainsailNull() {
+		waypoint.setMainsail(null);
 	}
 	
 
 	@Test
 	public void testManeuver() {
+		waypoint.setManeuver(Maneuver.ANKER_DOWN);
+		assertEquals(Maneuver.ANKER_DOWN, waypoint.getManeuver());
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testManeuverNull() {
+		waypoint.setManeuver(null);
 	}
 
 	@Test

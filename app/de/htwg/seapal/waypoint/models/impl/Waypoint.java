@@ -18,6 +18,16 @@ public class Waypoint implements IWaypoint {
 	private ForeSail foreSail;
 	private MainSail mainSail;
 	
+	public Waypoint() {
+		id = "";
+		name = "";
+		position = "0°E 0°N";
+		note = "";
+		maneuver = Maneuver.NONE;
+		foreSail = ForeSail.NONE;
+		mainSail = MainSail.NONE;
+	}
+	
 	/* (non-Javadoc)
 	 * @see models.impls.IWaypoint#getName()
 	 */
@@ -122,6 +132,8 @@ public class Waypoint implements IWaypoint {
 	 */
 	
 	public void setForesail(ForeSail foreSail) {
+		if (foreSail == null)
+			throw new IllegalArgumentException("ForeSail must not be null.");
 		this.foreSail = foreSail;
 	}
 
@@ -154,6 +166,8 @@ public class Waypoint implements IWaypoint {
 	 */
 	@Override
 	public void setNote(String note) {
+		if (note == null)
+			throw new IllegalArgumentException();
 		this.note = note;
 	}
 
@@ -202,6 +216,8 @@ public class Waypoint implements IWaypoint {
 	 */
 	@Override
 	public void setManeuver(Maneuver maneuver) {
+		if (maneuver == null)
+			throw new IllegalArgumentException("Maneuver must not be null. Use NONE instead.");
 		this.maneuver = maneuver;
 	}
 
@@ -210,6 +226,8 @@ public class Waypoint implements IWaypoint {
 	 */
 	@Override
 	public void setMainsail(MainSail mainSail) {
+		if (mainSail == null)
+			throw new IllegalArgumentException("Mainsail must not be null. Use NONE instead.");
 		this.mainSail = mainSail;
 	}
 	
@@ -226,8 +244,16 @@ public class Waypoint implements IWaypoint {
 		  	.append("; man=").append(maneuver)
 		  	.append("; fsail=").append(foreSail)
 		  	.append("; msail=").append(mainSail)
+		  	.append("; mark=").append(mark)
 		  	.append("}");
 		return sb.toString();
+	}
+	
+	@Override
+	public void setId(String id) {
+		if (id == null)
+			throw new IllegalArgumentException("Id must not be null.");
+		this.id = id;
 	}
 
 	@Override
@@ -235,4 +261,52 @@ public class Waypoint implements IWaypoint {
 		return id;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == this) {
+			return true;
+		}
+		if (!(obj instanceof IWaypoint)) {
+			return false;
+		}
+		IWaypoint other = (IWaypoint)obj;
+		return (
+				this.id.equals(other.getId())
+				&& this.name.equals(other.getName())
+				&& this.note.equals(other.getNote())
+				&& this.position.equals(other.getPosition())
+				&& this.btm == other.getBTM()
+				&& this.dtm == other.getDTM()
+				&& this.cog == other.getCOG()
+				&& this.sog == other.getSOG()
+				&& this.foreSail == other.getForesail()
+				&& this.mainSail == other.getMainsail()
+				&& this.maneuver == other.getManeuver()
+				&& ((this.mark != null && this.mark.equals(other.getMark()))
+				   || (this.mark == null && other.getMark() == null))
+				);
+	}
+	
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		IWaypoint ret = new Waypoint();
+		ret.setId(id);
+		ret.setName(name);
+		ret.setNote(note);
+		ret.setPosition(position);
+		ret.setBTM(btm);
+		ret.setDTM(dtm);
+		ret.setCOG(cog);
+		ret.setSOG(sog);
+		ret.setForesail(foreSail);
+		ret.setMainsail(mainSail);
+		ret.setManeuver(maneuver);
+		ret.setMark(mark);
+		return ret;
+	}
 }
