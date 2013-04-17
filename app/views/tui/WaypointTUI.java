@@ -66,7 +66,7 @@ public class WaypointTUI implements IObserver, Plugin {
 			controller.setMainsail(MainSail.valueOf(scanner.next()));
 		}
 		if (input.equalsIgnoreCase("mark")) {
-//			controller.setMark(scanner.next());
+//		
 		}
 		return continu;
 	}	
@@ -91,11 +91,11 @@ public class WaypointTUI implements IObserver, Plugin {
 
 	@Override
 	public String getMenuEntry() {
-		return null;
+		return "Waypoint";
 	}
 
 	@Override
 	public char getMenuKey() {
-		return 0;
+		return 'w';
 	}
 }

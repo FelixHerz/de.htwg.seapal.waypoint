@@ -4,15 +4,15 @@ import de.htwg.seapal.mark.models.IMark;
 
 public interface IWaypoint {
 
-	enum Maneuver {
+	public enum Maneuver {
 		NONE, TACK, JIBE, LAYTO, SET_SAILS, CHANGE_SAILS, SAILS_DOWN, REFF, ANKER_UP, ANKER_DOWN
 	}
 
-	enum ForeSail {
+	public enum ForeSail {
 		NONE, GENUA1, GENUA2, GENUA3, FOCK, STORM_FOCK, BISTER, SPINACKER
 	}
 
-	enum MainSail {
+	public enum MainSail {
 		NONE, FULL, REEF1, REEF2
 	}
 	

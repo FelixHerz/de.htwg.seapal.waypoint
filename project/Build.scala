@@ -14,7 +14,8 @@ object ApplicationBuild extends Build {
 		"com.google.inject" % "guice" % "3.0",
 		"com.google.inject.extensions" % "guice-multibindings" % "3.0",
 		"de.htwg" % "util" % "1.0-SNAPSHOT",
-		"de.htwg.seapal" % "mark" % "1.0-SNAPSHOT"
+		"de.htwg.seapal" % "mark" % "1.0-SNAPSHOT",
+    	"com.db4o" % "db4o-full-java5" % "8.1-SNAPSHOT"
 	)
 
   	val main = play.Project(appName, appVersion, appDependencies).settings(
@@ -26,6 +27,7 @@ object ApplicationBuild extends Build {
 	crossPaths := false, 
 
 	resolvers += "HTWG Resolver" at "http://lenny2.in.htwg-konstanz.de:8081/artifactory/libs-snapshot-local",	
+	resolvers += "db4o-repo" at "http://source.db4o.com/maven",
 	publishTo := Some("HTWG Publisher" at "http://lenny2.in.htwg-konstanz.de:8081/artifactory/libs-snapshot-local;build.timestamp=" + 
 	new java.util.Date().getTime()),
 		pomExtra :=
