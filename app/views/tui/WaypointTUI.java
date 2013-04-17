@@ -72,24 +72,29 @@ public class WaypointTUI implements IObserver, Plugin {
 //			TODO: Übergabe testen, Absprache bezgl. Params 
 			markTUI.processInputLine(controller.getMark().toString());
 		}
+		scanner.close();
 		return continu;
 	}	
 	
 	public void printTUI() {
 		out.println(controller.getString());
-		out.println("WaypointDemo:" +
-				"\t\t q - quit\n" +
-				"\t\t name  - set name\n" +
-				"\t\t pos   - set position\n" +
-				"\t\t note  - set note\n" +
-				"\t\t btm   - set btm\n" +
-				"\t\t dtm   - set dtm\n" +
-				"\t\t cog   - set cog\n" +
-				"\t\t sog   - set sog\n" +
-				"\t\t man   - set maneuver\n" +
-				"\t\t fsail - set foresail\n" +
-				"\t\t msail - set mainsail\n" +
-				"\t\t mark  - set mark");
+		out.println("WaypointDemo:\n" +
+				"\t\t create - creates new waypoint\n" +
+				"\t\t save   - saves all changes\n" +
+				"\t\t delete - deletes the current waypoint\n" +
+				"\t\t select - selects an waypoint by its id\n\n" +
+				"\t\t pos    - set position\n" +
+				"\t\t note   - set note\n" +
+				"\t\t btm    - set bare to mark\n" +
+				"\t\t dtm    - set distance to mark\n" +
+				"\t\t cog    - set course over ground\n" +
+				"\t\t sog    - set speed over ground\n" +
+				"\t\t man    - set maneuver\n" +
+				"\t\t fsail  - set foresail\n" +
+				"\t\t msail  - set mainsail\n" +
+				"\t\t mark   - set mark\n" +
+				"\t\t q - quit");
+		out.print(">>");
 		
 	}
 

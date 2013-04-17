@@ -11,13 +11,14 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 
-import de.htwg.seapal.waypoint.controllers.impl.WaypointControllerDb4o;
 import de.htwg.seapal.waypoint.models.IWaypoint;
 import de.htwg.seapal.waypoint.models.IWaypoint.MainSail;
+import de.htwg.seapal.waypoint.persistence.IPersistenceController;
+import de.htwg.seapal.waypoint.persistence.db4o.WaypointControllerDb4o;
 
 public class DestDb4oController {
 
-	private WaypointControllerDb4o dbController;
+	private IPersistenceController dbController;
 	private final IWaypoint waypoint;
 	
 	public DestDb4oController() {
@@ -41,13 +42,14 @@ public class DestDb4oController {
 
 	@Before
 	public void setUp() throws Exception {
-		dbController = new WaypointControllerDb4o("test.data");
+		dbController = new WaypointControllerDb4o();
+		dbController.open("test.data");
 		
 	}
 
 	@After
 	public void tearDown() throws Exception {
-		dbController.closeDb();
+		dbController.close();
 		File f = new File("test.data");
 		if (f.exists()) {
 			if (!f.delete()) {
@@ -58,20 +60,20 @@ public class DestDb4oController {
 
 	@Test
 	public void testStoreWaypoint() {
-		dbController.saveWaypoint(waypoint);
+		dbController.insertWaypoint(waypoint);
 		IWaypoint waypointGot = dbController.getWaypointById("W1");
 		assertEquals(waypoint, waypointGot);
 	}
 
 	@Test
 	public void testUpdateWaypoint() throws CloneNotSupportedException {
-		dbController.saveWaypoint(waypoint);
+		dbController.insertWaypoint(waypoint);
 		IWaypoint waypointGot = dbController.getWaypointById("W1");
 		
 		IWaypoint clone = (IWaypoint)waypoint.clone();
 		
 		waypointGot.setMainsail(MainSail.FULL);
-		dbController.saveWaypoint(waypointGot);
+		dbController.updateWaypoint(waypointGot);
 		
 		waypointGot = dbController.getWaypointById("W1");
 		
@@ -87,7 +89,9 @@ public class DestDb4oController {
 
 	@Test
 	public void testDeleteWaypoint() {
-		
+		dbController.insertWaypoint(waypoint);
+		dbController.deleteWaypoint(waypoint);
+		assertNull(dbController.getWaypointById("W1"));
 	}
 
 }
