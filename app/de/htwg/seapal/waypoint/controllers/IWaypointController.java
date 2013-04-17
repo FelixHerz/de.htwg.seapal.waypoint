@@ -8,49 +8,49 @@ import de.htwg.util.observer.IObservable;
 
 public interface IWaypointController extends IObservable {
 
-	public abstract String getName();
+	 String getName();
 
-	public abstract String getPosition();
+	 String getPosition();
 
-	public abstract String getNote();
+	 String getNote();
 
-	public abstract int getBTM();
+	 int getBTM();
 
-	public abstract int getDTM();
+	 int getDTM();
 
-	public abstract int getCOG();
+	 int getCOG();
 
-	public abstract int getSOG();
+	 int getSOG();
 
-	public abstract IMark getMark();
+	 IMark getMark();
 
-	public abstract Maneuver getManeuver();
+	 Maneuver getManeuver();
 
-	public abstract ForeSail getForesail();
+	 ForeSail getForesail();
 
-	public abstract MainSail getMainsail();
+	 MainSail getMainsail();
 
-	public abstract void setForesail(ForeSail foreSail);
+	 void setForesail(ForeSail foreSail);
 
-	public abstract void setName(String name);
+	 void setName(String name);
 
-	public abstract void setPosition(String position);
+	 void setPosition(String position);
 
-	public abstract void setNote(String note);
+	 void setNote(String note);
 
-	public abstract void setBTM(int btm);
+	 void setBTM(int btm);
 
-	public abstract void setDTM(int dtm);
+	 void setDTM(int dtm);
 
-	public abstract void setCOG(int cog);
+	 void setCOG(int cog);
 
-	public abstract void setSOG(int sog);
+	 void setSOG(int sog);
 
-	public abstract void setMark(IMark mark);
+	 void setMark(IMark mark);
 
-	public abstract void setManeuver(Maneuver maneuver);
+	 void setManeuver(Maneuver maneuver);
 
-	public abstract void setMainsail(MainSail mainSail);
+	 void setMainsail(MainSail mainSail);
 	
 	String getString();
 
