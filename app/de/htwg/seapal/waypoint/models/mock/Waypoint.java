@@ -139,4 +139,14 @@ public class Waypoint implements IWaypoint {
 		return "w1";
 	}
 
+	@Override
+	public void setId(String id) {
+		
+	}
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		return this;
+	}
+
 }

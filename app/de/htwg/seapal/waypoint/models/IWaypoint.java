@@ -60,6 +60,9 @@ public interface IWaypoint {
 
 	 void setMainsail(MainSail mainSail);
 
+	 void setId(String id);
+	 
 	 String getId();
-
+	 
+	 Object clone() throws CloneNotSupportedException;
 }
