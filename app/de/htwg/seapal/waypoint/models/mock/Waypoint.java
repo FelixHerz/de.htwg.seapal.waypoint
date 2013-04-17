@@ -134,4 +134,9 @@ public class Waypoint implements IWaypoint {
 		return sb.toString();
 	}
 
+	@Override
+	public String getId() {
+		return "w1";
+	}
+
 }
