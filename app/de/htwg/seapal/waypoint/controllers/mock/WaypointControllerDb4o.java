@@ -32,8 +32,9 @@ public class WaypointControllerDb4o {
 			}
 		});
 		
-		if (waypoints.isEmpty())
+		if (waypoints.isEmpty()) {
 			return null;
+		}
 		return waypoints.get(0);
 	}
 	

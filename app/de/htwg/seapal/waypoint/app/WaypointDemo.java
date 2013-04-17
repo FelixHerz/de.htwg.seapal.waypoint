@@ -9,7 +9,9 @@ import com.google.inject.Injector;
 
 import de.htwg.seapal.mark.app.MarkImplModule;
 
-public class WaypointDemo {
+public final class WaypointDemo {
+	
+	private WaypointDemo() { }
 
 	public static void main(String[] args) {
 
@@ -27,6 +29,7 @@ public class WaypointDemo {
 		while (continu) {
 			continu = tui.processInputLine(scanner.nextLine());
 		}
+		scanner.close();
 
 	}
 }

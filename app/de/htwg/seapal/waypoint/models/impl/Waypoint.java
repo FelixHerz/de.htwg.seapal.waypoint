@@ -130,8 +130,9 @@ public class Waypoint implements IWaypoint {
 	 */
 	@Override
 	public void setName(String name) {
-		if (name == null || name.equals(""))
+		if (name == null || name.equals("")) {
 			throw new IllegalArgumentException();
+		}
 		this.name = name;
 	}
 
@@ -139,14 +140,16 @@ public class Waypoint implements IWaypoint {
 	 * @see models.impls.IWaypoint#setPosition(java.lang.String)
 	 */
 	@Override
-	public void setPosition(String position) {
-		if (position == null || position.equals(""))
+	public void setPosition(final String position) {
+		if (position == null || position.equals("")) {
 			throw new IllegalArgumentException();
-		position = position.trim();
-		if (!position.matches("((1[0-8][0-9])|(0?\\d{0,2}))°(\\d{1,2}')?(\\d{1,2}\")?[E|W]\\s?" +
-				"((90)|([0-8]\\d|\\d))°(\\d{1,2}')?(\\d{1,2}\")?[N|S]"))
+		}
+		String trimmedposition = position.trim();
+		if (!trimmedposition.matches("((1[0-8][0-9])|(0?\\d{0,2}))°(\\d{1,2}')?(\\d{1,2}\")?[E|W]\\s?" +
+				"((90)|([0-8]\\d|\\d))°(\\d{1,2}')?(\\d{1,2}\")?[N|S]")) {
 			throw new IllegalArgumentException(position);
-		this.position = position;
+		}
+		this.position = trimmedposition;
 	}
 
 	/* (non-Javadoc)

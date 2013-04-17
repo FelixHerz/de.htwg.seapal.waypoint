@@ -1,10 +1,11 @@
 package views.tui;
 
 import java.util.Scanner;
-
+import static java.lang.System.out;
 import com.google.inject.Inject;
 
 
+import de.htwg.seapal.mark.views.tui.MarkTUI;
 import de.htwg.seapal.waypoint.controllers.IWaypointController;
 import de.htwg.seapal.waypoint.models.IWaypoint.*;
 import de.htwg.util.observer.Event;
@@ -14,6 +15,8 @@ import de.htwg.util.plugin.Plugin;
 public class WaypointTUI implements IObserver, Plugin {
 	
 	private IWaypointController controller;
+	// TODO: Reference to IMark
+	private MarkTUI markTUI;
 	
 	@Inject
 	public WaypointTUI(IWaypointController controller) {
@@ -66,14 +69,15 @@ public class WaypointTUI implements IObserver, Plugin {
 			controller.setMainsail(MainSail.valueOf(scanner.next()));
 		}
 		if (input.equalsIgnoreCase("mark")) {
-//		
+//			TODO: Übergabe testen, Absprache bezgl. Params 
+			markTUI.processInputLine(controller.getMark().toString());
 		}
 		return continu;
 	}	
 	
 	public void printTUI() {
-		System.out.println(controller.getString());
-		System.out.println("WaypointDemo:" +
+		out.println(controller.getString());
+		out.println("WaypointDemo:" +
 				"\t\t q - quit\n" +
 				"\t\t name  - set name\n" +
 				"\t\t pos   - set position\n" +
