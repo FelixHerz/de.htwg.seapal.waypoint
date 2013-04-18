@@ -1,6 +1,6 @@
 package de.htwg.seapal.waypoint.persistence;
 
-import java.util.TreeMap;
+import java.util.Map;
 
 import de.htwg.seapal.waypoint.models.IWaypoint;
 
@@ -11,24 +11,24 @@ public interface IPersistenceController {
 	 * @param database
 	 */
 	void open(String database);
-	
+
 	/**
 	 * Closes the Database.
 	 */
 	void close();
-	
+
 	/**
 	 * Returns all Waypoints in a Mapping id->Waypoint.
 	 * @return Mapping of all waypoints
 	 */
-	TreeMap<String, IWaypoint> loadWaypoints();
+	Map<String, IWaypoint> loadWaypoints();
 
 	/**
 	 * Returns a limited number of Waypoints in a Mapping id->Waypoint.
 	 * @param limit the number of waypoints to return
 	 * @return Mapping of waypoints
 	 */
-	TreeMap<String, IWaypoint> loadWaypoints(int limit);
+	Map<String, IWaypoint> loadWaypoints(int limit);
 
 	/**
 	 * Returns a specific waypoint represented through the id.

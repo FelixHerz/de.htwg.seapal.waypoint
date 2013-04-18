@@ -1,9 +1,9 @@
 package de.htwg.seapal.waypoint.models.mock;
 
 import de.htwg.seapal.mark.models.IMark;
-import de.htwg.seapal.waypoint.models.IWaypoint;
+import de.htwg.seapal.waypoint.models.AbstractWaypoint;
 
-public class Waypoint implements IWaypoint {
+public class Waypoint extends AbstractWaypoint {
 
 	@Override
 	public String getName() {
@@ -61,92 +61,8 @@ public class Waypoint implements IWaypoint {
 	}
 
 	@Override
-	public void setForesail(ForeSail foreSail) {
-		
-		
-	}
-
-	@Override
-	public void setName(String name) {
-			
-	}
-
-	@Override
-	public void setPosition(String position) {
-		
-	}
-
-	@Override
-	public void setNote(String note) {
-		
-	}
-
-	@Override
-	public void setBTM(int btm) {
-		
-	}
-
-	@Override
-	public void setDTM(int dtm) {
-		
-	}
-
-	@Override
-	public void setCOG(int cog) {
-		
-	}
-
-	@Override
-	public void setSOG(int sog) {
-		
-	}
-
-	@Override
-	public void setMark(IMark mark) {
-		
-	}
-
-	@Override
-	public void setManeuver(Maneuver maneuver) {
-		
-	}
-
-	@Override
-	public void setMainsail(MainSail mainSail) {
-		
-	}
-
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder("{");
-		sb.append("name=").append(getName())
-		  	.append("; pos=").append(getPosition())
-		  	.append("; note=").append(getNote())
-		  	.append("; btm=").append(getBTM())
-		  	.append("; dtm=").append(getDTM())
-		  	.append("; cog=").append(getCOG())
-		  	.append("; sog=").append(getSOG())
-		  	.append("; man=").append(getManeuver())
-		  	.append("; fsail=").append(getForesail())
-		  	.append("; msail=").append(getMainsail())
-		  	.append("; mark=").append(getMark())
-		  	.append("}");
-		return sb.toString();
-	}
-
-	@Override
 	public String getId() {
 		return "w1";
-	}
-
-	@Override
-	public void setId(String id) {
-		
-	}
-	
-	@Override
-	public Object clone() throws CloneNotSupportedException {
-		return this;
 	}
 
 }

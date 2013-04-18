@@ -2,7 +2,6 @@ package de.htwg.seapal.waypoint.controllers;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.NoSuchElementException;
 import java.util.Random;
 
 import com.google.inject.Singleton;
@@ -25,6 +24,8 @@ import de.htwg.util.observer.Observable;
 @Singleton
 public class AbstractWaypointController extends Observable
 implements IWaypointController {
+
+	private static final int MAX_RANDOM_ID = 9999;
 
 	/** The currently selected waypoint.	 */
 	private IWaypoint waypoint;
@@ -152,7 +153,7 @@ implements IWaypointController {
 	}
 
 	@Override
-	public final void setMark(final String markId) throws NoSuchElementException {
+	public final void setMark(final String markId) {
 		//TODO not implemented at all
 		throw new UnsupportedOperationException("Not implemented yet");
 	}
@@ -181,7 +182,7 @@ implements IWaypointController {
 		//TODO Save Changes before creating a new waypoint?
 		//FIXME Compute id(?)
 		waypoint = new Waypoint();
-		waypoint.setId(String.valueOf(new Random().nextInt(9999)));
+		waypoint.setId(String.valueOf(new Random().nextInt(MAX_RANDOM_ID)));
 		notifyObservers();
 	}
 

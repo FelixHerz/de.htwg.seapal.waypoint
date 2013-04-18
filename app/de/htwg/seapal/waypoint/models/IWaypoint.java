@@ -2,7 +2,7 @@ package de.htwg.seapal.waypoint.models;
 
 import de.htwg.seapal.mark.models.IMark;
 
-public interface IWaypoint {
+public interface IWaypoint extends Cloneable {
 
 	public enum Maneuver {
 		NONE, TACK, JIBE, LAYTO, SET_SAILS, CHANGE_SAILS, SAILS_DOWN, REFF, ANKER_UP, ANKER_DOWN
@@ -15,54 +15,54 @@ public interface IWaypoint {
 	public enum MainSail {
 		NONE, FULL, REEF1, REEF2
 	}
-	
-	 String getName();
 
-	 String getPosition();
+	String getName();
 
-	 String getNote();
+	String getPosition();
 
-	 int getBTM();
+	String getNote();
 
-	 int getDTM();
+	int getBTM();
 
-	 int getCOG();
+	int getDTM();
 
-	 int getSOG();
+	int getCOG();
 
-	 IMark getMark();
+	int getSOG();
 
-	 Maneuver getManeuver();
+	IMark getMark();
 
-	 ForeSail getForesail();
+	Maneuver getManeuver();
 
-	 MainSail getMainsail();
+	ForeSail getForesail();
 
-	 void setForesail(ForeSail foreSail);
+	MainSail getMainsail();
 
-	 void setName(String name);
+	void setForesail(ForeSail foreSail);
 
-	 void setPosition(String position);
+	void setName(String name);
 
-	 void setNote(String note);
+	void setPosition(String position);
 
-	 void setBTM(int btm);
+	void setNote(String note);
 
-	 void setDTM(int dtm);
+	void setBTM(int btm);
 
-	 void setCOG(int cog);
+	void setDTM(int dtm);
 
-	 void setSOG(int sog);
+	void setCOG(int cog);
 
-	 void setMark(IMark mark);
+	void setSOG(int sog);
 
-	 void setManeuver(Maneuver maneuver);
+	void setMark(IMark mark);
 
-	 void setMainsail(MainSail mainSail);
+	void setManeuver(Maneuver maneuver);
 
-	 void setId(String id);
-	 
-	 String getId();
-	 
-	 Object clone() throws CloneNotSupportedException;
+	void setMainsail(MainSail mainSail);
+
+	void setId(String id);
+
+	String getId();
+
+	Object clone() throws CloneNotSupportedException;
 }

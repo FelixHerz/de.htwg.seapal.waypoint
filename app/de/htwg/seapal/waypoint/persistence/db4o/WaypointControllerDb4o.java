@@ -1,6 +1,7 @@
 package de.htwg.seapal.waypoint.persistence.db4o;
 
 import java.util.List;
+import java.util.Map;
 import java.util.TreeMap;
 
 import com.db4o.Db4oEmbedded;
@@ -47,7 +48,7 @@ public class WaypointControllerDb4o implements IPersistenceController {
 	}
 
 	@Override
-	public TreeMap<String, IWaypoint> loadWaypoints() {
+	public Map<String, IWaypoint> loadWaypoints() {
 		List<IWaypoint> list = db.query(IWaypoint.class);
 		TreeMap<String, IWaypoint> map = new TreeMap<String, IWaypoint>();
 		for (IWaypoint iWaypoint : list) {
@@ -57,7 +58,7 @@ public class WaypointControllerDb4o implements IPersistenceController {
 	}
 
 	@Override
-	public TreeMap<String, IWaypoint> loadWaypoints(final int limit) {
+	public Map<String, IWaypoint> loadWaypoints(final int limit) {
 		List<IWaypoint> list = db.query(IWaypoint.class);
 		TreeMap<String, IWaypoint> map = new TreeMap<String, IWaypoint>();
 		int i = 0;

@@ -1,18 +1,19 @@
 package de.htwg.seapal.waypoint.models.mock;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import de.htwg.seapal.waypoint.models.IWaypoint;
+import de.htwg.seapal.waypoint.models.IWaypoint.ForeSail;
 import de.htwg.seapal.waypoint.models.IWaypoint.MainSail;
-import de.htwg.seapal.waypoint.models.IWaypoint.*;
+import de.htwg.seapal.waypoint.models.IWaypoint.Maneuver;
 
 public class WaypointTest {
 
 	private IWaypoint waypoint;
-	
+
 	@Before
 	public void setUp() throws Exception {
 		waypoint = new Waypoint();
@@ -51,7 +52,7 @@ public class WaypointTest {
 	public void testGetSOG() {
 		assertEquals(0, waypoint.getSOG());
 	}
-	
+
 	//FIXME use a correct mark
 	@Test
 	public void testGetMark() {
@@ -62,13 +63,13 @@ public class WaypointTest {
 	public void testGetForesail() {
 		assertEquals(ForeSail.NONE, waypoint.getForesail());
 	}
-	
+
 
 	@Test
 	public void testGetMainsail() {
 		assertEquals(MainSail.REEF1, waypoint.getMainsail());
 	}
-	
+
 
 	@Test
 	public void testGetManeuver() {
@@ -77,11 +78,11 @@ public class WaypointTest {
 
 	@Test
 	public void testToString() {
-		assertEquals("{name=MyWaypoint; pos=0°12'12\"E 47°12'12\"N; note=Here is a note; " +
+		assertEquals("{id=w1; name=MyWaypoint; pos=0°12'12\"E 47°12'12\"N; note=Here is a note; " +
 				"btm=0; dtm=0; cog=0; sog=0; man=ANKER_DOWN; fsail=NONE; msail=REEF1; mark=null}",
 				waypoint.toString());
 	}
-	
+
 
 
 }

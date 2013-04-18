@@ -132,7 +132,7 @@ public interface IWaypointController extends IObservable {
 	 * @param markId id of mark
 	 * @throws NoSuchElementException if there is no Mark to the id
 	 */
-	void setMark(String markId) throws NoSuchElementException;
+	void setMark(String markId);
 
 	/**
 	 * Sets the maneuver of the waypoint.
