@@ -118,7 +118,12 @@ public class ControllerDBOTest {
 		Map<String, IWaypoint> map = dbController.loadWaypoints(2);
 		assertEquals(2, map.size());
 		assertEquals(waypoint, map.get("W1"));
-		assertFalse(clone.equals(map.get("w2")));
+		assertNull(map.get("w3"));
+
+		map = dbController.loadWaypoints(4);
+		assertEquals(3, map.size());
+		assertEquals(waypoint, map.get("W1"));
+		assertEquals(clone, map.get("w3"));
 	}
 
 	@Test

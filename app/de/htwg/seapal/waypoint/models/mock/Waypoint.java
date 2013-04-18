@@ -2,8 +2,28 @@ package de.htwg.seapal.waypoint.models.mock;
 
 import de.htwg.seapal.mark.models.IMark;
 import de.htwg.seapal.waypoint.models.AbstractWaypoint;
+import de.htwg.seapal.waypoint.models.IWaypoint;
 
+/**
+ * Mock of an waypoint for testing.
+ * @author Felix
+ *
+ */
 public class Waypoint extends AbstractWaypoint {
+
+	/**
+	 * Creates a new waypoint mock.
+	 */
+	public Waypoint() {
+	}
+
+	/**
+	 * Creates a copy of the given waypoint.
+	 * @param waypoint
+	 */
+	public Waypoint(final IWaypoint waypoint) {
+		super(waypoint);
+	}
 
 	@Override
 	public String getName() {
@@ -63,6 +83,12 @@ public class Waypoint extends AbstractWaypoint {
 	@Override
 	public String getId() {
 		return "w1";
+	}
+
+
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		return new Waypoint(this);
 	}
 
 }

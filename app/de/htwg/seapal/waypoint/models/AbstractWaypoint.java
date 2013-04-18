@@ -1,7 +1,6 @@
 package de.htwg.seapal.waypoint.models;
 
 import de.htwg.seapal.mark.models.IMark;
-import de.htwg.seapal.waypoint.models.impl.Waypoint;
 
 public abstract class AbstractWaypoint implements IWaypoint {
 
@@ -26,6 +25,21 @@ public abstract class AbstractWaypoint implements IWaypoint {
 		maneuver = Maneuver.NONE;
 		foreSail = ForeSail.NONE;
 		mainSail = MainSail.NONE;
+	}
+
+	protected AbstractWaypoint(final IWaypoint waypoint) {
+		setId(waypoint.getId());
+		setName(waypoint.getName());
+		setPosition(waypoint.getPosition());
+		setNote(waypoint.getNote());
+		setBTM(waypoint.getBTM());
+		setDTM(waypoint.getDTM());
+		setCOG(waypoint.getCOG());
+		setSOG(waypoint.getSOG());
+		setManeuver(waypoint.getManeuver());
+		setForesail(waypoint.getForesail());
+		setMainsail(waypoint.getMainsail());
+		setMark(waypoint.getMark());
 	}
 
 
@@ -306,21 +320,5 @@ public abstract class AbstractWaypoint implements IWaypoint {
 	}
 
 	@Override
-	public Object clone() throws CloneNotSupportedException {
-		IWaypoint ret = new Waypoint();
-		ret.setId(id);
-		ret.setName(name);
-		ret.setNote(note);
-		ret.setPosition(position);
-		ret.setBTM(btm);
-		ret.setDTM(dtm);
-		ret.setCOG(cog);
-		ret.setSOG(sog);
-		ret.setForesail(foreSail);
-		ret.setMainsail(mainSail);
-		ret.setManeuver(maneuver);
-		ret.setMark(mark);
-		return ret;
-	}
-
+	public abstract Object clone() throws CloneNotSupportedException;
 }
