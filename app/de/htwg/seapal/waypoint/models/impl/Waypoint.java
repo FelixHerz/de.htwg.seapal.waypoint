@@ -3,7 +3,7 @@ package de.htwg.seapal.waypoint.models.impl;
 import de.htwg.seapal.mark.models.IMark;
 import de.htwg.seapal.waypoint.models.IWaypoint;
 
-public class Waypoint implements IWaypoint {
+public final class Waypoint implements IWaypoint {
 
 	private String id;
 	private String name;
@@ -17,7 +17,7 @@ public class Waypoint implements IWaypoint {
 	private Maneuver maneuver;
 	private ForeSail foreSail;
 	private MainSail mainSail;
-	
+
 	public Waypoint() {
 		id = "";
 		name = "";
@@ -27,12 +27,12 @@ public class Waypoint implements IWaypoint {
 		foreSail = ForeSail.NONE;
 		mainSail = MainSail.NONE;
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see models.impls.IWaypoint#getName()
 	 */
 	@Override
-	
+
 	public String getName() {
 		return name;
 	}
@@ -40,7 +40,7 @@ public class Waypoint implements IWaypoint {
 	/* (non-Javadoc)
 	 * @see models.impls.IWaypoint#getPosition()
 	 */
-	
+
 	@Override
 	public String getPosition() {
 		return position;
@@ -49,7 +49,7 @@ public class Waypoint implements IWaypoint {
 	/* (non-Javadoc)
 	 * @see models.impls.IWaypoint#getNote()
 	 */
-	
+
 	@Override
 	public String getNote() {
 		return note;
@@ -58,7 +58,7 @@ public class Waypoint implements IWaypoint {
 	/* (non-Javadoc)
 	 * @see models.impls.IWaypoint#getBTM()
 	 */
-	
+
 	@Override
 	public int getBTM() {
 		return btm;
@@ -67,7 +67,7 @@ public class Waypoint implements IWaypoint {
 	/* (non-Javadoc)
 	 * @see models.impls.IWaypoint#getDTM()
 	 */
-	
+
 	@Override
 	public int getDTM() {
 		return dtm;
@@ -76,7 +76,7 @@ public class Waypoint implements IWaypoint {
 	/* (non-Javadoc)
 	 * @see models.impls.IWaypoint#getCOG()
 	 */
-	
+
 	@Override
 	public int getCOG() {
 		return cog;
@@ -85,7 +85,7 @@ public class Waypoint implements IWaypoint {
 	/* (non-Javadoc)
 	 * @see models.impls.IWaypoint#getSOG()
 	 */
-	
+
 	@Override
 	public int getSOG() {
 		return sog;
@@ -94,7 +94,7 @@ public class Waypoint implements IWaypoint {
 	/* (non-Javadoc)
 	 * @see models.impls.IWaypoint#getMark()
 	 */
-	
+
 	@Override
 	public IMark getMark() {
 		return mark;
@@ -103,7 +103,7 @@ public class Waypoint implements IWaypoint {
 	/* (non-Javadoc)
 	 * @see models.impls.IWaypoint#getManeuver()
 	 */
-	
+
 	@Override
 	public Maneuver getManeuver() {
 		return maneuver;
@@ -112,7 +112,7 @@ public class Waypoint implements IWaypoint {
 	/* (non-Javadoc)
 	 * @see models.impls.IWaypoint#getForesail()
 	 */
-	
+
 	@Override
 	public ForeSail getForesail() {
 		return foreSail;
@@ -121,19 +121,21 @@ public class Waypoint implements IWaypoint {
 	/* (non-Javadoc)
 	 * @see models.impls.IWaypoint#getMainsail()
 	 */
-	
+
 	@Override
 	public MainSail getMainsail() {
 		return mainSail;
 	}
-	
+
 	/* (non-Javadoc)
 	 * @see models.impls.IWaypoint#setForesail(models.IWaypoint.ForeSail)
 	 */
-	
-	public void setForesail(ForeSail foreSail) {
-		if (foreSail == null)
+
+	@Override
+	public void setForesail(final ForeSail foreSail) {
+		if (foreSail == null) {
 			throw new IllegalArgumentException("ForeSail must not be null.");
+		}
 		this.foreSail = foreSail;
 	}
 
@@ -141,7 +143,7 @@ public class Waypoint implements IWaypoint {
 	 * @see models.impls.IWaypoint#setName(java.lang.String)
 	 */
 	@Override
-	public void setName(String name) {
+	public void setName(final String name) {
 		if (name == null || name.equals("")) {
 			throw new IllegalArgumentException();
 		}
@@ -168,9 +170,10 @@ public class Waypoint implements IWaypoint {
 	 * @see models.impls.IWaypoint#setNote(java.lang.String)
 	 */
 	@Override
-	public void setNote(String note) {
-		if (note == null)
+	public void setNote(final String note) {
+		if (note == null) {
 			throw new IllegalArgumentException();
+		}
 		this.note = note;
 	}
 
@@ -178,7 +181,7 @@ public class Waypoint implements IWaypoint {
 	 * @see models.impls.IWaypoint#setBTM(int)
 	 */
 	@Override
-	public void setBTM(int btm) {
+	public void setBTM(final int btm) {
 		this.btm = btm;
 	}
 
@@ -186,7 +189,7 @@ public class Waypoint implements IWaypoint {
 	 * @see models.impls.IWaypoint#setDTM(int)
 	 */
 	@Override
-	public void setDTM(int dtm) {
+	public void setDTM(final int dtm) {
 		this.dtm = dtm;
 	}
 
@@ -194,7 +197,7 @@ public class Waypoint implements IWaypoint {
 	 * @see models.impls.IWaypoint#setCOG(int)
 	 */
 	@Override
-	public void setCOG(int cog) {
+	public void setCOG(final int cog) {
 		this.cog = cog;
 	}
 
@@ -202,7 +205,7 @@ public class Waypoint implements IWaypoint {
 	 * @see models.impls.IWaypoint#setSOG(int)
 	 */
 	@Override
-	public void setSOG(int sog) {
+	public void setSOG(final int sog) {
 		this.sog = sog;
 	}
 
@@ -210,7 +213,7 @@ public class Waypoint implements IWaypoint {
 	 * @see models.impls.IWaypoint#setMark(models.IMark)
 	 */
 	@Override
-	public void setMark(IMark mark) {
+	public void setMark(final IMark mark) {
 		this.mark = mark;
 	}
 
@@ -218,9 +221,11 @@ public class Waypoint implements IWaypoint {
 	 * @see models.impls.IWaypoint#setManeuver(models.IWaypoint.Maneuver)
 	 */
 	@Override
-	public void setManeuver(Maneuver maneuver) {
-		if (maneuver == null)
-			throw new IllegalArgumentException("Maneuver must not be null. Use NONE instead.");
+	public void setManeuver(final Maneuver maneuver) {
+		if (maneuver == null) {
+			throw new IllegalArgumentException(
+					"Maneuver must not be null. Use NONE instead.");
+		}
 		this.maneuver = maneuver;
 	}
 
@@ -228,34 +233,38 @@ public class Waypoint implements IWaypoint {
 	 * @see models.impls.IWaypoint#setMainsail(models.IWaypoint.MainSail)
 	 */
 	@Override
-	public void setMainsail(MainSail mainSail) {
-		if (mainSail == null)
-			throw new IllegalArgumentException("Mainsail must not be null. Use NONE instead.");
+	public void setMainsail(final MainSail mainSail) {
+		if (mainSail == null) {
+			throw new IllegalArgumentException(
+					"Mainsail must not be null. Use NONE instead.");
+		}
 		this.mainSail = mainSail;
 	}
-	
+
 	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder("{");
-		sb.append("name=").append(name)
-		  	.append("; pos=").append(position)
-		  	.append("; note=").append(note)
-		  	.append("; btm=").append(btm)
-		  	.append("; dtm=").append(dtm)
-		  	.append("; cog=").append(cog)
-		  	.append("; sog=").append(sog)
-		  	.append("; man=").append(maneuver)
-		  	.append("; fsail=").append(foreSail)
-		  	.append("; msail=").append(mainSail)
-		  	.append("; mark=").append(mark)
-		  	.append("}");
+		sb.append("id=").append(id)
+		.append("; name=").append(name)
+		.append("; pos=").append(position)
+		.append("; note=").append(note)
+		.append("; btm=").append(btm)
+		.append("; dtm=").append(dtm)
+		.append("; cog=").append(cog)
+		.append("; sog=").append(sog)
+		.append("; man=").append(maneuver)
+		.append("; fsail=").append(foreSail)
+		.append("; msail=").append(mainSail)
+		.append("; mark=").append(mark)
+		.append("}");
 		return sb.toString();
 	}
-	
+
 	@Override
-	public void setId(String id) {
-		if (id == null)
+	public void setId(final String id) {
+		if (id == null) {
 			throw new IllegalArgumentException("Id must not be null.");
+		}
 		this.id = id;
 	}
 
@@ -265,7 +274,7 @@ public class Waypoint implements IWaypoint {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(final Object obj) {
 		if (obj == this) {
 			return true;
 		}
@@ -286,15 +295,15 @@ public class Waypoint implements IWaypoint {
 				&& this.mainSail == other.getMainsail()
 				&& this.maneuver == other.getManeuver()
 				&& ((this.mark != null && this.mark.equals(other.getMark()))
-				   || (this.mark == null && other.getMark() == null))
+						|| (this.mark == null && other.getMark() == null))
 				);
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return super.hashCode();
 	}
-	
+
 	@Override
 	public Object clone() throws CloneNotSupportedException {
 		IWaypoint ret = new Waypoint();

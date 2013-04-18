@@ -7,12 +7,17 @@ import de.htwg.seapal.waypoint.controllers.impl.WaypointController;
 import de.htwg.seapal.waypoint.models.IWaypoint;
 import de.htwg.seapal.waypoint.models.impl.Waypoint;
 
+/**
+ * Injects the waypoint dependencies using the implementations.
+ * @author Felix
+ *
+ */
 public class WaypointDemoImplModule extends AbstractModule {
 
 	@Override
 	protected void configure() {
 		bind(IWaypoint.class).to(Waypoint.class);
-		bind(IWaypointController.class).to(WaypointController.class);	
+		bind(IWaypointController.class).to(WaypointController.class);
 	}
 
 }

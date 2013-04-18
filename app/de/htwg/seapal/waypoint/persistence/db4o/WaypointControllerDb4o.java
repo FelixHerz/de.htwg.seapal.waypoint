@@ -11,13 +11,13 @@ import de.htwg.seapal.waypoint.models.IWaypoint;
 import de.htwg.seapal.waypoint.persistence.IPersistenceController;
 
 public class WaypointControllerDb4o implements IPersistenceController {
-	
-	
+
+
 	private ObjectContainer db;
-	
+
 	public WaypointControllerDb4o() {
 	}
-	
+
 	@Override
 	public IWaypoint getWaypointById(final String waypointId) {
 		List<IWaypoint> waypoints = db.query(new Predicate<IWaypoint>() {
@@ -25,23 +25,19 @@ public class WaypointControllerDb4o implements IPersistenceController {
 			private static final long serialVersionUID = 1L;
 
 			@Override
-			public boolean match(IWaypoint waypoint) {
+			public boolean match(final IWaypoint waypoint) {
 				return waypoint.getId().equals(waypointId);
 			}
 		});
-		
+
 		if (waypoints.isEmpty()) {
 			return null;
 		}
 		return waypoints.get(0);
 	}
-	
-	public void deleteWaypointById(String waypointId) {
-		db.delete(getWaypointById(waypointId));
-	}
 
 	@Override
-	public void open(String database) {
+	public void open(final String database) {
 		db = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), database);
 	}
 
@@ -61,7 +57,7 @@ public class WaypointControllerDb4o implements IPersistenceController {
 	}
 
 	@Override
-	public TreeMap<String, IWaypoint> loadWaypoints(int limit) {
+	public TreeMap<String, IWaypoint> loadWaypoints(final int limit) {
 		List<IWaypoint> list = db.query(IWaypoint.class);
 		TreeMap<String, IWaypoint> map = new TreeMap<String, IWaypoint>();
 		int i = 0;
@@ -79,24 +75,24 @@ public class WaypointControllerDb4o implements IPersistenceController {
 	//TODO what if waypoint (not) stored yet?
 	//TODO handle exceptions
 	//TODO set returnvalue right
-	
+
 	@Override
-	public boolean insertWaypoint(IWaypoint waypoint) {
+	public boolean insertWaypoint(final IWaypoint waypoint) {
 		db.store(waypoint);
 		return true;
 	}
 
 	@Override
-	public boolean updateWaypoint(IWaypoint waypoint) {
+	public boolean updateWaypoint(final IWaypoint waypoint) {
 		db.store(waypoint);
 		return true;
 	}
 
 	@Override
-	public boolean deleteWaypoint(IWaypoint waypoint) {
+	public boolean deleteWaypoint(final IWaypoint waypoint) {
 		db.delete(waypoint);
 		return true;
 	}
-	
-	
+
+
 }

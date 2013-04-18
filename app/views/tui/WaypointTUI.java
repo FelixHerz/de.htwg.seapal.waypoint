@@ -1,35 +1,40 @@
 package views.tui;
 
-import java.util.Scanner;
 import static java.lang.System.out;
-import com.google.inject.Inject;
 
+import java.util.Scanner;
+
+import com.google.inject.Inject;
 
 import de.htwg.seapal.mark.views.tui.MarkTUI;
 import de.htwg.seapal.waypoint.controllers.IWaypointController;
-import de.htwg.seapal.waypoint.models.IWaypoint.*;
+import de.htwg.seapal.waypoint.models.IWaypoint;
+import de.htwg.seapal.waypoint.models.IWaypoint.ForeSail;
+import de.htwg.seapal.waypoint.models.IWaypoint.MainSail;
+import de.htwg.seapal.waypoint.models.IWaypoint.Maneuver;
 import de.htwg.util.observer.Event;
 import de.htwg.util.observer.IObserver;
 import de.htwg.util.plugin.Plugin;
 
 public class WaypointTUI implements IObserver, Plugin {
-	
-	private IWaypointController controller;
+
+	private final IWaypointController controller;
 	// TODO: Reference to IMark
 	private MarkTUI markTUI;
-	
+
 	@Inject
-	public WaypointTUI(IWaypointController controller) {
+	public WaypointTUI(final IWaypointController controller) {
 		this.controller = controller;
 		this.controller.addObserver(this);
 	}
-	
+
 	@Override
-	public void update(Event e) {
+	public void update(final Event e) {
 		printTUI();
 	}
-	
-	public boolean processInputLine(String line) {
+
+	@Override
+	public boolean processInputLine(final String line) {
 
 		Scanner scanner = new Scanner(line);
 		scanner.useDelimiter(" ");
@@ -37,6 +42,7 @@ public class WaypointTUI implements IObserver, Plugin {
 		boolean continu = true;
 		if (input.equalsIgnoreCase("q")) {
 			continu = false;
+			controller.tearDown();
 		}
 		if (input.equalsIgnoreCase("name")) {
 			controller.setName(scanner.next());
@@ -69,13 +75,32 @@ public class WaypointTUI implements IObserver, Plugin {
 			controller.setMainsail(MainSail.valueOf(scanner.next()));
 		}
 		if (input.equalsIgnoreCase("mark")) {
-//			TODO: Übergabe testen, Absprache bezgl. Params 
+			//			TODO: Übergabe testen, Absprache bezgl. Params
 			markTUI.processInputLine(controller.getMark().toString());
+		}
+		if (input.equalsIgnoreCase("create")) {
+			controller.createNewWaypoint();
+		}
+		if (input.equalsIgnoreCase("save")) {
+			controller.saveWaypoint();
+		}
+		if (input.equalsIgnoreCase("delete")) {
+			controller.deleteWaypoint();
+		}
+		if (input.equalsIgnoreCase("select")) {
+			controller.updateWaypoint(scanner.next());
+		}
+		if (input.equalsIgnoreCase("show")) {
+			for (IWaypoint iWaypoint : controller.getWaypoints()) {
+				System.out.println(iWaypoint);
+			}
+			printTUI();
 		}
 		scanner.close();
 		return continu;
-	}	
-	
+	}
+
+	@Override
 	public void printTUI() {
 		out.println(controller.getString());
 		out.println("WaypointDemo:\n" +
@@ -83,6 +108,7 @@ public class WaypointTUI implements IObserver, Plugin {
 				"\t\t save   - saves all changes\n" +
 				"\t\t delete - deletes the current waypoint\n" +
 				"\t\t select - selects an waypoint by its id\n\n" +
+				"\t\t show   - print out all stored waypoints\n\n" +
 				"\t\t pos    - set position\n" +
 				"\t\t note   - set note\n" +
 				"\t\t btm    - set bare to mark\n" +
@@ -95,7 +121,7 @@ public class WaypointTUI implements IObserver, Plugin {
 				"\t\t mark   - set mark\n" +
 				"\t\t q - quit");
 		out.print(">>");
-		
+
 	}
 
 	@Override

@@ -1,10 +1,12 @@
 package de.htwg.seapal.waypoint.controllers;
 
+import java.util.LinkedList;
+import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Random;
 
 import com.google.inject.Singleton;
 
-import de.htwg.seapal.mark.controllers.IMarkController;
 import de.htwg.seapal.mark.models.IMark;
 import de.htwg.seapal.waypoint.models.IWaypoint;
 import de.htwg.seapal.waypoint.models.IWaypoint.ForeSail;
@@ -12,186 +14,211 @@ import de.htwg.seapal.waypoint.models.IWaypoint.MainSail;
 import de.htwg.seapal.waypoint.models.IWaypoint.Maneuver;
 import de.htwg.seapal.waypoint.models.impl.Waypoint;
 import de.htwg.seapal.waypoint.persistence.IPersistenceController;
+import de.htwg.seapal.waypoint.persistence.db4o.WaypointControllerDb4o;
 import de.htwg.util.observer.Observable;
 
+/**
+ * Implements the common default behaviour.
+ * @author Felix
+ *
+ */
 @Singleton
 public class AbstractWaypointController extends Observable
-		implements IWaypointController {
+implements IWaypointController {
 
-	/** The currently selected waypoint	 */
+	/** The currently selected waypoint.	 */
 	private IWaypoint waypoint;
-	
-	/** To foreward all mark calls */
-	private IMarkController markController;
-	
-	/** Controller handeling the persistence */
-	private IPersistenceController persistenceController;
-	
-	protected AbstractWaypointController(IWaypoint waypoint) {
-		this.waypoint = waypoint;
-	}
-	
 
+	/** Controller handeling the persistence. */
+	private final IPersistenceController persistenceController;
+
+	/**
+	 * Creates an instance with a waypoint. Only for generalized classes.
+	 * @param pWaypoint the waypoint.
+	 */
+	protected AbstractWaypointController(final IWaypoint pWaypoint) {
+		this.waypoint = pWaypoint;
+		persistenceController = new WaypointControllerDb4o();
+		persistenceController.open("waypoint.data");
+	}
+
+	/** (non-Javadoc).
+	 * @see models.impls.IWaypoint#getName()
+	 */
 	@Override
-	public String getName() {
+	public final String getName() {
 		return waypoint.getName();
 	}
 
 	@Override
-	public String getPosition() {
+	public final String getPosition() {
 		return waypoint.getPosition();
 	}
 
 	@Override
-	public String getNote() {
+	public final String getNote() {
 		return waypoint.getNote();
 	}
-	
+
 	@Override
-	public int getBTM() {
+	public final int getBTM() {
 		return waypoint.getBTM();
 	}
 
 	@Override
-	public int getDTM() {
+	public final int getDTM() {
 		return waypoint.getDTM();
 	}
 
 	@Override
-	public int getCOG() {
+	public final int getCOG() {
 		return waypoint.getCOG();
 	}
 
 	@Override
-	public int getSOG() {
+	public final int getSOG() {
 		return waypoint.getSOG();
 	}
 
 	@Override
-	public IMark getMark() {
+	public final IMark getMark() {
 		return waypoint.getMark();
 	}
 
 	@Override
-	public Maneuver getManeuver() {
+	public final Maneuver getManeuver() {
 		return waypoint.getManeuver();
 	}
 
 	@Override
-	public ForeSail getForesail() {
+	public final ForeSail getForesail() {
 		return waypoint.getForesail();
 	}
 
 	@Override
-	public MainSail getMainsail() {
+	public final MainSail getMainsail() {
 		return waypoint.getMainsail();
 	}
 
-	
-	
+
+
 	@Override
-	public void setForesail(ForeSail foreSail) {
+	public final void setForesail(final ForeSail foreSail) {
 		waypoint.setForesail(foreSail);
 		notifyObservers();
 	}
 
 	@Override
-	public void setName(String name) {
+	public final void setName(final String name) {
 		waypoint.setName(name);
 		notifyObservers();
-		
+
 	}
 
 	@Override
-	public void setPosition(String position) {
+	public final void setPosition(final String position) {
 		waypoint.setPosition(position);
 		notifyObservers();
 	}
 
 	@Override
-	public void setNote(String note) {
+	public final void setNote(final String note) {
 		waypoint.setNote(note);
 		notifyObservers();
 	}
 
 	@Override
-	public void setBTM(int btm) {
+	public final void setBTM(final int btm) {
 		waypoint.setBTM(btm);
 		notifyObservers();
 	}
 
 	@Override
-	public void setDTM(int dtm) {
+	public final void setDTM(final int dtm) {
 		waypoint.setDTM(dtm);
 		notifyObservers();
 	}
 
 	@Override
-	public void setCOG(int cog) {
+	public final void setCOG(final int cog) {
 		waypoint.setCOG(cog);
 		notifyObservers();
 	}
 
 	@Override
-	public void setSOG(int sog) {
+	public final void setSOG(final int sog) {
 		waypoint.setSOG(sog);
 		notifyObservers();
 	}
 
 	@Override
-	public void setMark(String markId) throws NoSuchElementException {
+	public final void setMark(final String markId) throws NoSuchElementException {
 		//TODO not implemented at all
-		markController.getString();
+		throw new UnsupportedOperationException("Not implemented yet");
 	}
 
 	@Override
-	public void setManeuver(Maneuver maneuver) {
+	public final void setManeuver(final Maneuver maneuver) {
 		waypoint.setManeuver(maneuver);
-		notifyObservers();		
+		notifyObservers();
 	}
 
 	@Override
-	public void setMainsail(MainSail mainSail) {
+	public final void setMainsail(final MainSail mainSail) {
 		waypoint.setMainsail(mainSail);
 		notifyObservers();
 	}
 
 	@Override
-	public String getString() {
+	public final String getString() {
 		return "Waypoint:" + waypoint.toString();
 	}
 
 
 	@Override
-	public void createNewWaypoint() {
+	public final void createNewWaypoint() {
 		//FIXME Use DependencyInjection here
 		//TODO Save Changes before creating a new waypoint?
-		//TODO Compute id(?)
+		//FIXME Compute id(?)
 		waypoint = new Waypoint();
+		waypoint.setId(String.valueOf(new Random().nextInt(9999)));
 		notifyObservers();
 	}
 
 
 	@Override
-	public void updateWaypoint(String id) {
+	public final void updateWaypoint(final String id) {
 		waypoint = persistenceController.getWaypointById(id);
 		notifyObservers();
 	}
 
 
 	@Override
-	public void deleteWaypoint() {
-		if (waypoint != null)
+	public final void deleteWaypoint() {
+		if (waypoint != null) {
 			persistenceController.deleteWaypoint(waypoint);
+		}
 		notifyObservers();
 	}
 
 
 	@Override
-	public void saveWaypoint() {
-		if (waypoint != null)
+	public final void saveWaypoint() {
+		if (waypoint != null) {
 			persistenceController.insertWaypoint(waypoint);
+		}
 		notifyObservers();
+	}
+
+	@Override
+	public final void tearDown() {
+		persistenceController.close();
+	}
+
+	@Override
+	public final List<IWaypoint> getWaypoints() {
+		return new LinkedList<IWaypoint>(
+				persistenceController.loadWaypoints().values());
 	}
 
 }
