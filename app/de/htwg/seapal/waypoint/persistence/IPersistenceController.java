@@ -4,6 +4,11 @@ import java.util.Map;
 
 import de.htwg.seapal.waypoint.models.IWaypoint;
 
+/**
+ * The Interface for controller of the persistence data flow.
+ * @author Felix
+ *
+ */
 public interface IPersistenceController {
 
 	/**
