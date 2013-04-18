@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
+import java.util.Map;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -90,8 +91,34 @@ public class ControllerDBOTest {
 	}
 
 	@Test
-	public void testGetWaypoint() {
+	public void testGetWaypoints() throws CloneNotSupportedException {
+		dbController.insertWaypoint(waypoint);
+		IWaypoint clone = (IWaypoint)waypoint.clone();
+		clone.setId("w2");
+		dbController.insertWaypoint(clone);
 
+		Map<String, IWaypoint> map = dbController.loadWaypoints();
+		assertEquals(2, map.size());
+		assertEquals(waypoint, map.get("W1"));
+		assertEquals(clone, map.get("w2"));
+	}
+
+
+	@Test
+	public void testGetWaypointsLimit() throws CloneNotSupportedException {
+		dbController.insertWaypoint(waypoint);
+		IWaypoint clone = (IWaypoint)waypoint.clone();
+		clone.setId("w2");
+		dbController.insertWaypoint(clone);
+
+		clone = (IWaypoint)waypoint.clone();
+		clone.setId("w3");
+		dbController.insertWaypoint(clone);
+
+		Map<String, IWaypoint> map = dbController.loadWaypoints(2);
+		assertEquals(2, map.size());
+		assertEquals(waypoint, map.get("W1"));
+		assertFalse(clone.equals(map.get("w2")));
 	}
 
 	@Test
