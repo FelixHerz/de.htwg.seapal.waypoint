@@ -12,7 +12,7 @@ import de.htwg.seapal.waypoint.models.impl.Waypoint;
  * @author Felix
  *
  */
-public class WaypointDemoImplModule extends AbstractModule {
+public class WaypointImplModule extends AbstractModule {
 
 	@Override
 	protected void configure() {

@@ -12,7 +12,7 @@ import de.htwg.seapal.waypoint.models.mock.Waypoint;
  * @author Felix
  *
  */
-public class WaypointDemoMockModule extends AbstractModule {
+public class WaypointMockModule extends AbstractModule {
 
 	@Override
 	protected void configure() {

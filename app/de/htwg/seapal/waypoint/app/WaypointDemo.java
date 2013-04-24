@@ -26,7 +26,7 @@ public final class WaypointDemo {
 	public static void main(final String[] args) {
 
 		// Set up Google Guice Dependency Injector
-		Injector injector = Guice.createInjector(new WaypointDemoImplModule(),
+		Injector injector = Guice.createInjector(new WaypointImplModule(),
 				new MarkImplModule());
 
 		/* Build up the application, resolving dependencies
