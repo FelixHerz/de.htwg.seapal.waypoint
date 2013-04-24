@@ -1,7 +1,10 @@
 package de.htwg.seapal.waypoint.models;
 
+import javax.persistence.MappedSuperclass;
+
 import de.htwg.seapal.mark.models.IMark;
 
+@MappedSuperclass
 public abstract class AbstractWaypoint implements IWaypoint {
 
 	private String id;

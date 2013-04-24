@@ -1,5 +1,7 @@
 package de.htwg.seapal.waypoint.models.mock;
 
+import javax.persistence.Entity;
+
 import de.htwg.seapal.mark.models.IMark;
 import de.htwg.seapal.waypoint.models.AbstractWaypoint;
 import de.htwg.seapal.waypoint.models.IWaypoint;
@@ -9,6 +11,7 @@ import de.htwg.seapal.waypoint.models.IWaypoint;
  * @author Felix
  *
  */
+@Entity
 public class Waypoint extends AbstractWaypoint {
 
 	/**
