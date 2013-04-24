@@ -1,4 +1,4 @@
-package de.htwg.seapal.waypoint.persistence.db4o;
+package de.htwg.seapal.waypoint.database.db4o;
 
 import java.util.List;
 import java.util.Map;
@@ -8,10 +8,10 @@ import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;
 import com.db4o.query.Predicate;
 
+import de.htwg.seapal.waypoint.database.IWaypointDatabase;
 import de.htwg.seapal.waypoint.models.IWaypoint;
-import de.htwg.seapal.waypoint.persistence.IPersistenceController;
 
-public class WaypointControllerDb4o implements IPersistenceController {
+public class WaypointControllerDb4o implements IWaypointDatabase {
 
 
 	private ObjectContainer db;

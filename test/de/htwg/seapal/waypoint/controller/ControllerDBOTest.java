@@ -14,10 +14,10 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import de.htwg.seapal.waypoint.database.IWaypointDatabase;
+import de.htwg.seapal.waypoint.database.db4o.WaypointControllerDb4o;
 import de.htwg.seapal.waypoint.models.IWaypoint;
 import de.htwg.seapal.waypoint.models.IWaypoint.MainSail;
-import de.htwg.seapal.waypoint.persistence.IPersistenceController;
-import de.htwg.seapal.waypoint.persistence.db4o.WaypointControllerDb4o;
 
 /**
  * Test the Persistence using a DB4O database.
@@ -26,7 +26,7 @@ import de.htwg.seapal.waypoint.persistence.db4o.WaypointControllerDb4o;
  */
 public class ControllerDBOTest {
 
-	private IPersistenceController dbController;
+	private IWaypointDatabase dbController;
 	private final IWaypoint waypoint;
 
 	public ControllerDBOTest() {

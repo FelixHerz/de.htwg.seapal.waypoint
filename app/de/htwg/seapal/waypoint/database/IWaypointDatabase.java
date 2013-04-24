@@ -1,4 +1,4 @@
-package de.htwg.seapal.waypoint.persistence;
+package de.htwg.seapal.waypoint.database;
 
 import java.util.Map;
 
@@ -9,7 +9,7 @@ import de.htwg.seapal.waypoint.models.IWaypoint;
  * @author Felix
  *
  */
-public interface IPersistenceController {
+public interface IWaypointDatabase {
 
 	/**
 	 * Opens the database.

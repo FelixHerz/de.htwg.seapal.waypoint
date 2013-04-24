@@ -7,13 +7,13 @@ import java.util.Random;
 import com.google.inject.Singleton;
 
 import de.htwg.seapal.mark.models.IMark;
+import de.htwg.seapal.waypoint.database.IWaypointDatabase;
+import de.htwg.seapal.waypoint.database.db4o.WaypointControllerDb4o;
 import de.htwg.seapal.waypoint.models.IWaypoint;
 import de.htwg.seapal.waypoint.models.IWaypoint.ForeSail;
 import de.htwg.seapal.waypoint.models.IWaypoint.MainSail;
 import de.htwg.seapal.waypoint.models.IWaypoint.Maneuver;
 import de.htwg.seapal.waypoint.models.impl.Waypoint;
-import de.htwg.seapal.waypoint.persistence.IPersistenceController;
-import de.htwg.seapal.waypoint.persistence.db4o.WaypointControllerDb4o;
 import de.htwg.util.observer.Observable;
 
 /**
@@ -31,7 +31,7 @@ implements IWaypointController {
 	private IWaypoint waypoint;
 
 	/** Controller handeling the persistence. */
-	private final IPersistenceController persistenceController;
+	private final IWaypointDatabase persistenceController;
 
 	/**
 	 * Creates an instance with a waypoint. Only for generalized classes.
