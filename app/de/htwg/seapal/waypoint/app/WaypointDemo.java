@@ -1,6 +1,14 @@
 package de.htwg.seapal.waypoint.app;
 
+import java.io.File;
 import java.util.Scanner;
+
+import play.api.Application;
+import play.api.DefaultApplication;
+import play.api.Mode;
+import play.api.Play;
+
+
 
 import views.tui.WaypointTUI;
 
@@ -42,6 +50,17 @@ public final class WaypointDemo {
 			continu = tui.processInputLine(scanner.nextLine());
 		}
 		scanner.close();
+		
+		// Initialize Play Application to use the play environment functions...
+		Application play = new DefaultApplication(
+				new File("."), WaypointDemo.class.getClassLoader(), null, Mode.Dev());
+		Play.start(play);
+		
+		try {
+		// other code of your main-Method…
+		} finally {
+			Play.stop();
+		}
 
 	}
 }
