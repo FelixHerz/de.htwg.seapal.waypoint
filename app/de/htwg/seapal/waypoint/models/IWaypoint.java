@@ -16,8 +16,16 @@ public interface IWaypoint extends Cloneable {
 		NONE, FULL, REEF1, REEF2
 	}
 
+	/**
+	 * Returns the name of the Waypoint.
+	 * @return the name of the waypoint
+	 */
 	String getName();
 
+	/**
+	 * Returns the position of the waypoint.
+	 * @return the position
+	 */
 	String getPosition();
 
 	String getNote();

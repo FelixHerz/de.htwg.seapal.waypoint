@@ -7,9 +7,6 @@ import play.api.Application;
 import play.api.DefaultApplication;
 import play.api.Mode;
 import play.api.Play;
-
-
-
 import views.tui.WaypointTUI;
 
 import com.google.inject.Guice;
@@ -33,31 +30,31 @@ public final class WaypointDemo {
 	 */
 	public static void main(final String[] args) {
 
-		// Set up Google Guice Dependency Injector
-		Injector injector = Guice.createInjector(new WaypointImplModule(),
-				new MarkImplModule());
 
-		/* Build up the application, resolving dependencies
-		 * automatically by Guice */
-		WaypointTUI tui = injector.getInstance(WaypointTUI.class);
 
-		tui.printTUI();
-		/* continue to read user input on the tui until the user
-		 * decides to quit*/
-		boolean continu = true;
-		Scanner scanner = new Scanner(System.in);
-		while (continu) {
-			continu = tui.processInputLine(scanner.nextLine());
-		}
-		scanner.close();
-		
 		// Initialize Play Application to use the play environment functions...
 		Application play = new DefaultApplication(
 				new File("."), WaypointDemo.class.getClassLoader(), null, Mode.Dev());
 		Play.start(play);
-		
+
 		try {
-		// other code of your main-Method…
+			// Set up Google Guice Dependency Injector
+			Injector injector = Guice.createInjector(new WaypointImplModule(),
+					new MarkImplModule());
+
+			/* Build up the application, resolving dependencies
+			 * automatically by Guice */
+			WaypointTUI tui = injector.getInstance(WaypointTUI.class);
+
+			tui.printTUI();
+			/* continue to read user input on the tui until the user
+			 * decides to quit*/
+			boolean continu = true;
+			Scanner scanner = new Scanner(System.in);
+			while (continu) {
+				continu = tui.processInputLine(scanner.nextLine());
+			}
+			scanner.close();
 		} finally {
 			Play.stop();
 		}

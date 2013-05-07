@@ -94,4 +94,64 @@ public class Waypoint extends AbstractWaypoint {
 		return new Waypoint(this);
 	}
 
+	@Override
+	public void setForesail(final ForeSail foreSail) {
+
+	}
+
+	@Override
+	public void setName(final String name) {
+
+	}
+
+	@Override
+	public void setPosition(final String position) {
+
+	}
+
+	@Override
+	public void setNote(final String note) {
+
+	}
+
+	@Override
+	public void setBTM(final int btm) {
+
+	}
+
+	@Override
+	public void setDTM(final int dtm) {
+
+	}
+
+	@Override
+	public void setCOG(final int cog) {
+
+	}
+
+	@Override
+	public void setSOG(final int sog) {
+
+	}
+
+	@Override
+	public void setMark(final IMark mark) {
+
+	}
+
+	@Override
+	public void setManeuver(final Maneuver maneuver) {
+
+	}
+
+	@Override
+	public void setMainsail(final MainSail mainSail) {
+
+	}
+
+	@Override
+	public void setId(final String id) {
+
+	}
+
 }
