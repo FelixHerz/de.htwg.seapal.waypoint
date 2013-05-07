@@ -87,6 +87,7 @@ public class Waypoint extends AbstractWaypoint {
 		setForesail(waypoint.getForesail());
 		setMainsail(waypoint.getMainsail());
 		setMark(waypoint.getMark());
+		System.out.println(toString());
 	}
 
 	@Override
