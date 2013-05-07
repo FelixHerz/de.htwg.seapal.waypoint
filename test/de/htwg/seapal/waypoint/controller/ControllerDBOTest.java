@@ -85,6 +85,8 @@ public class ControllerDBOTest {
 
 		waypointGot = dbController.getWaypointById("W1");
 
+		System.out.println(clone);
+		System.out.println(waypointGot);
 		assertFalse(clone.equals(waypointGot));
 		assertTrue(waypoint.equals(waypointGot));
 
