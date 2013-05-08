@@ -6,7 +6,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import de.htwg.seapal.mark.models.IMark;
 import de.htwg.seapal.waypoint.models.AbstractWaypoint;
 
 
@@ -22,37 +21,37 @@ public class Waypoint extends AbstractWaypoint {
 	private String id;
 
 	@Column
-	private String name;
+	private String name = "";
 
 	@Column
-	private String position;
+	private String position = "";
 
 	@Column
-	private String note;
+	private String note = "";
 
 	@Column
-	private int btm;
+	private int btm = 0;
 
 	@Column
-	private int dtm;
+	private int dtm = 0;
 
 	@Column
-	private int sog;
+	private int sog = 0;
 
 	@Column
-	private int cog;
+	private int cog = 0;
 
 	@Column
-	private IMark mark;
+	private String mark = "";
 
 	@Column
-	private Maneuver maneuver;
+	private Maneuver maneuver = Maneuver.NONE;
 
 	@Column
-	private ForeSail foresail;
+	private ForeSail foresail = ForeSail.NONE;
 
 	@Column
-	private MainSail mainsail;
+	private MainSail mainsail = MainSail.NONE;
 
 
 
@@ -79,10 +78,10 @@ public class Waypoint extends AbstractWaypoint {
 		setName(waypoint.getName());
 		setPosition(waypoint.getPosition());
 		setNote(waypoint.getNote());
-		setBTM(waypoint.getBTM());
-		setDTM(waypoint.getDTM());
-		setCOG(waypoint.getCOG());
-		setSOG(waypoint.getSOG());
+		setBtm(waypoint.getBtm());
+		setDtm(waypoint.getDtm());
+		setCog(waypoint.getCog());
+		setSog(waypoint.getSog());
 		setManeuver(waypoint.getManeuver());
 		setForesail(waypoint.getForesail());
 		setMainsail(waypoint.getMainsail());
@@ -134,7 +133,7 @@ public class Waypoint extends AbstractWaypoint {
 	 */
 
 	@Override
-	public int getBTM() {
+	public int getBtm() {
 		return btm;
 	}
 
@@ -143,7 +142,7 @@ public class Waypoint extends AbstractWaypoint {
 	 */
 
 	@Override
-	public int getDTM() {
+	public int getDtm() {
 		return dtm;
 	}
 
@@ -152,7 +151,7 @@ public class Waypoint extends AbstractWaypoint {
 	 */
 
 	@Override
-	public int getCOG() {
+	public int getCog() {
 		return cog;
 	}
 
@@ -161,7 +160,7 @@ public class Waypoint extends AbstractWaypoint {
 	 */
 
 	@Override
-	public int getSOG() {
+	public int getSog() {
 		return sog;
 	}
 
@@ -170,7 +169,7 @@ public class Waypoint extends AbstractWaypoint {
 	 */
 
 	@Override
-	public IMark getMark() {
+	public String getMark() {
 		return mark;
 	}
 
@@ -255,7 +254,7 @@ public class Waypoint extends AbstractWaypoint {
 	 * @see models.impls.IWaypoint#setBTM(int)
 	 */
 	@Override
-	public void setBTM(final int btm) {
+	public void setBtm(final int btm) {
 		this.btm = btm;
 	}
 
@@ -263,7 +262,7 @@ public class Waypoint extends AbstractWaypoint {
 	 * @see models.impls.IWaypoint#setDTM(int)
 	 */
 	@Override
-	public void setDTM(final int dtm) {
+	public void setDtm(final int dtm) {
 		this.dtm = dtm;
 	}
 
@@ -271,7 +270,7 @@ public class Waypoint extends AbstractWaypoint {
 	 * @see models.impls.IWaypoint#setCOG(int)
 	 */
 	@Override
-	public void setCOG(final int cog) {
+	public void setCog(final int cog) {
 		this.cog = cog;
 	}
 
@@ -279,7 +278,7 @@ public class Waypoint extends AbstractWaypoint {
 	 * @see models.impls.IWaypoint#setSOG(int)
 	 */
 	@Override
-	public void setSOG(final int sog) {
+	public void setSog(final int sog) {
 		this.sog = sog;
 	}
 
@@ -287,7 +286,7 @@ public class Waypoint extends AbstractWaypoint {
 	 * @see models.impls.IWaypoint#setMark(models.IMark)
 	 */
 	@Override
-	public void setMark(final IMark mark) {
+	public void setMark(final String mark) {
 		this.mark = mark;
 	}
 

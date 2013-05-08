@@ -4,7 +4,6 @@ package de.htwg.seapal.waypoint.controllers;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import de.htwg.seapal.mark.models.IMark;
 import de.htwg.seapal.waypoint.models.IWaypoint;
 import de.htwg.seapal.waypoint.models.IWaypoint.ForeSail;
 import de.htwg.seapal.waypoint.models.IWaypoint.MainSail;
@@ -64,7 +63,7 @@ public interface IWaypointController extends IObservable {
 	 * Returns the mark.
 	 * @return the mark
 	 */
-	IMark getMark();
+	String getMark();
 
 	/**
 	 * Returns the maneuver done at the waypoint.

@@ -36,21 +36,21 @@ public class WaypointTest {
 
 	@Test
 	public void testGetBTM() {
-		assertEquals(0, waypoint.getBTM());
+		assertEquals(0, waypoint.getBtm());
 	}
 
 	@Test
 	public void testGetDTM() {
-		assertEquals(0, waypoint.getDTM());
+		assertEquals(0, waypoint.getDtm());
 	}
 
 	@Test
 	public void testGetCOG() {
-		assertEquals(0, waypoint.getCOG());
+		assertEquals(0, waypoint.getCog());
 	}
 	@Test
 	public void testGetSOG() {
-		assertEquals(0, waypoint.getSOG());
+		assertEquals(0, waypoint.getSog());
 	}
 
 	//FIXME use a correct mark

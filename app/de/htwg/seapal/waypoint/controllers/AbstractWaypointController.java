@@ -6,9 +6,8 @@ import java.util.Random;
 
 import com.google.inject.Singleton;
 
-import de.htwg.seapal.mark.models.IMark;
 import de.htwg.seapal.waypoint.database.IWaypointDatabase;
-import de.htwg.seapal.waypoint.database.db4o.WaypointControllerDb4o;
+import de.htwg.seapal.waypoint.database.impl.WaypointDB4ODatabase;
 import de.htwg.seapal.waypoint.models.IWaypoint;
 import de.htwg.seapal.waypoint.models.IWaypoint.ForeSail;
 import de.htwg.seapal.waypoint.models.IWaypoint.MainSail;
@@ -33,13 +32,14 @@ implements IWaypointController {
 	/** Controller handeling the persistence. */
 	private final IWaypointDatabase persistenceController;
 
+
 	/**
 	 * Creates an instance with a waypoint. Only for generalized classes.
 	 * @param pWaypoint the waypoint.
 	 */
 	protected AbstractWaypointController(final IWaypoint pWaypoint) {
 		this.waypoint = pWaypoint;
-		persistenceController = new WaypointControllerDb4o();
+		persistenceController = new WaypointDB4ODatabase();
 		persistenceController.open("waypoint.data");
 	}
 
@@ -63,26 +63,26 @@ implements IWaypointController {
 
 	@Override
 	public final int getBTM() {
-		return waypoint.getBTM();
+		return waypoint.getBtm();
 	}
 
 	@Override
 	public final int getDTM() {
-		return waypoint.getDTM();
+		return waypoint.getDtm();
 	}
 
 	@Override
 	public final int getCOG() {
-		return waypoint.getCOG();
+		return waypoint.getCog();
 	}
 
 	@Override
 	public final int getSOG() {
-		return waypoint.getSOG();
+		return waypoint.getSog();
 	}
 
 	@Override
-	public final IMark getMark() {
+	public final String getMark() {
 		return waypoint.getMark();
 	}
 
@@ -130,25 +130,25 @@ implements IWaypointController {
 
 	@Override
 	public final void setBTM(final int btm) {
-		waypoint.setBTM(btm);
+		waypoint.setBtm(btm);
 		notifyObservers();
 	}
 
 	@Override
 	public final void setDTM(final int dtm) {
-		waypoint.setDTM(dtm);
+		waypoint.setDtm(dtm);
 		notifyObservers();
 	}
 
 	@Override
 	public final void setCOG(final int cog) {
-		waypoint.setCOG(cog);
+		waypoint.setCog(cog);
 		notifyObservers();
 	}
 
 	@Override
 	public final void setSOG(final int sog) {
-		waypoint.setSOG(sog);
+		waypoint.setSog(sog);
 		notifyObservers();
 	}
 

@@ -1,4 +1,4 @@
-package de.htwg.seapal.waypoint.controller;
+package de.htwg.seapal.waypoint.database.impl;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -14,8 +14,11 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import play.api.Application;
+import play.api.DefaultApplication;
+import play.api.Mode;
+import play.api.Play;
 import de.htwg.seapal.waypoint.database.IWaypointDatabase;
-import de.htwg.seapal.waypoint.database.impl.WaypointDB4ODatabase;
 import de.htwg.seapal.waypoint.models.IWaypoint;
 import de.htwg.seapal.waypoint.models.IWaypoint.MainSail;
 
@@ -24,12 +27,12 @@ import de.htwg.seapal.waypoint.models.IWaypoint.MainSail;
  * @author Felix
  *
  */
-public class ControllerDBOTest {
+public class WaypointEbeanDatabaseTest {
 
 	private IWaypointDatabase dbController;
 	private final IWaypoint waypoint;
 
-	public ControllerDBOTest() {
+	public WaypointEbeanDatabaseTest() {
 		waypoint = new de.htwg.seapal.waypoint.models.impl.Waypoint();
 		waypoint.setId("W1");
 		waypoint.setBtm(12);
@@ -42,15 +45,24 @@ public class ControllerDBOTest {
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+
+
+		// Initialize Play Application to use the play environment functions...
+		Application play = new DefaultApplication(
+				new File("."), WaypointEbeanDatabaseTest.class.getClassLoader(), null, Mode.Dev());
+		Play.start(play);
+
+
 	}
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {
+		Play.stop();
 	}
 
 	@Before
 	public void setUp() throws Exception {
-		dbController = new WaypointDB4ODatabase();
+		dbController = new WaypointEBeanDatabase();
 		dbController.open("test.data");
 
 	}
@@ -70,11 +82,17 @@ public class ControllerDBOTest {
 	public void testStoreWaypoint() {
 		dbController.insertWaypoint(waypoint);
 		IWaypoint waypointGot = dbController.getWaypointById("W1");
+
+		//Verify
 		assertEquals(waypoint, waypointGot);
+
+		//clean up
+		dbController.deleteWaypoint(waypoint);
 	}
 
 	@Test
 	public void testUpdateWaypoint() throws CloneNotSupportedException {
+		//TODO check this test
 		dbController.insertWaypoint(waypoint);
 		IWaypoint waypointGot = dbController.getWaypointById("W1");
 
@@ -87,9 +105,13 @@ public class ControllerDBOTest {
 
 		System.out.println(clone);
 		System.out.println(waypointGot);
+		System.out.println(waypoint);
+		System.out.println(clone.equals(waypointGot));
 		assertFalse(clone.equals(waypointGot));
 		assertTrue(waypoint.equals(waypointGot));
 
+		//clean up
+		dbController.deleteWaypoint(waypoint);
 	}
 
 	@Test
@@ -103,6 +125,11 @@ public class ControllerDBOTest {
 		assertEquals(2, map.size());
 		assertEquals(waypoint, map.get("W1"));
 		assertEquals(clone, map.get("w2"));
+
+
+		//clean up
+		dbController.deleteWaypoint(waypoint);
+		dbController.deleteWaypoint(clone);
 	}
 
 

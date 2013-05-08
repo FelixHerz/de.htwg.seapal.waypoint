@@ -1,6 +1,5 @@
 package de.htwg.seapal.waypoint.models;
 
-import de.htwg.seapal.mark.models.IMark;
 
 public interface IWaypoint extends Cloneable {
 
@@ -30,15 +29,15 @@ public interface IWaypoint extends Cloneable {
 
 	String getNote();
 
-	int getBTM();
+	int getBtm();
 
-	int getDTM();
+	int getDtm();
 
-	int getCOG();
+	int getCog();
 
-	int getSOG();
+	int getSog();
 
-	IMark getMark();
+	String getMark();
 
 	Maneuver getManeuver();
 
@@ -54,15 +53,15 @@ public interface IWaypoint extends Cloneable {
 
 	void setNote(String note);
 
-	void setBTM(int btm);
+	void setBtm(int btm);
 
-	void setDTM(int dtm);
+	void setDtm(int dtm);
 
-	void setCOG(int cog);
+	void setCog(int cog);
 
-	void setSOG(int sog);
+	void setSog(int sog);
 
-	void setMark(IMark mark);
+	void setMark(String mark);
 
 	void setManeuver(Maneuver maneuver);
 

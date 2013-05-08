@@ -1,4 +1,4 @@
-package de.htwg.seapal.waypoint.database.db4o;
+package de.htwg.seapal.waypoint.database.impl;
 
 import java.util.List;
 import java.util.Map;
@@ -11,12 +11,12 @@ import com.db4o.query.Predicate;
 import de.htwg.seapal.waypoint.database.IWaypointDatabase;
 import de.htwg.seapal.waypoint.models.IWaypoint;
 
-public class WaypointControllerDb4o implements IWaypointDatabase {
+public class WaypointDB4ODatabase implements IWaypointDatabase {
 
 
 	private ObjectContainer db;
 
-	public WaypointControllerDb4o() {
+	public WaypointDB4ODatabase() {
 	}
 
 	@Override

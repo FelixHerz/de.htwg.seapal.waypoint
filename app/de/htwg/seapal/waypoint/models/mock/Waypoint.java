@@ -1,8 +1,5 @@
 package de.htwg.seapal.waypoint.models.mock;
 
-import javax.persistence.Entity;
-
-import de.htwg.seapal.mark.models.IMark;
 import de.htwg.seapal.waypoint.models.AbstractWaypoint;
 import de.htwg.seapal.waypoint.models.IWaypoint;
 
@@ -11,7 +8,6 @@ import de.htwg.seapal.waypoint.models.IWaypoint;
  * @author Felix
  *
  */
-@Entity
 public class Waypoint extends AbstractWaypoint {
 
 	/**
@@ -44,27 +40,27 @@ public class Waypoint extends AbstractWaypoint {
 	}
 
 	@Override
-	public int getBTM() {
+	public int getBtm() {
 		return 0;
 	}
 
 	@Override
-	public int getDTM() {
+	public int getDtm() {
 		return 0;
 	}
 
 	@Override
-	public int getCOG() {
+	public int getCog() {
 		return 0;
 	}
 
 	@Override
-	public int getSOG() {
+	public int getSog() {
 		return 0;
 	}
 
 	@Override
-	public IMark getMark() {
+	public String getMark() {
 		return null;
 	}
 
@@ -115,27 +111,27 @@ public class Waypoint extends AbstractWaypoint {
 	}
 
 	@Override
-	public void setBTM(final int btm) {
+	public void setBtm(final int btm) {
 
 	}
 
 	@Override
-	public void setDTM(final int dtm) {
+	public void setDtm(final int dtm) {
 
 	}
 
 	@Override
-	public void setCOG(final int cog) {
+	public void setCog(final int cog) {
 
 	}
 
 	@Override
-	public void setSOG(final int sog) {
+	public void setSog(final int sog) {
 
 	}
 
 	@Override
-	public void setMark(final IMark mark) {
+	public void setMark(final String mark) {
 
 	}
 
