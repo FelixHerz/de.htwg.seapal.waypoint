@@ -2,6 +2,7 @@ package views.tui;
 
 import static java.lang.System.out;
 
+import java.rmi.RemoteException;
 import java.util.Scanner;
 
 import com.google.inject.Inject;
@@ -25,7 +26,10 @@ public class WaypointTUI implements IObserver, Plugin {
 	@Inject
 	public WaypointTUI(final IWaypointController controller) {
 		this.controller = controller;
-		this.controller.addObserver(this);
+		//this.controller.addObserver(this);
+
+
+
 	}
 
 	@Override
@@ -35,74 +39,82 @@ public class WaypointTUI implements IObserver, Plugin {
 
 	@Override
 	public boolean processInputLine(final String line) {
-
 		Scanner scanner = new Scanner(line);
 		scanner.useDelimiter(" ");
 		String input = scanner.next();
 		boolean continu = true;
-		if (input.equalsIgnoreCase("q")) {
-			continu = false;
-			controller.tearDown();
-		}
-		if (input.equalsIgnoreCase("name")) {
-			controller.setName(scanner.next());
-		}
-		if (input.equalsIgnoreCase("pos")) {
-			controller.setPosition(scanner.next());
-		}
-		if (input.equalsIgnoreCase("note")) {
-			controller.setNote(scanner.next());
-		}
-		if (input.equalsIgnoreCase("btm")) {
-			controller.setBTM(scanner.nextInt());
-		}
-		if (input.equalsIgnoreCase("dtm")) {
-			controller.setDTM(scanner.nextInt());
-		}
-		if (input.equalsIgnoreCase("cog")) {
-			controller.setCOG(scanner.nextInt());
-		}
-		if (input.equalsIgnoreCase("sog")) {
-			controller.setSOG(scanner.nextInt());
-		}
-		if (input.equalsIgnoreCase("man")) {
-			controller.setManeuver(Maneuver.valueOf(scanner.next()));
-		}
-		if (input.equalsIgnoreCase("fsail")) {
-			controller.setForesail(ForeSail.valueOf(scanner.next()));
-		}
-		if (input.equalsIgnoreCase("msail")) {
-			controller.setMainsail(MainSail.valueOf(scanner.next()));
-		}
-		if (input.equalsIgnoreCase("mark")) {
-			//			TODO: Übergabe testen, Absprache bezgl. Params
-			markTUI.processInputLine(controller.getMark().toString());
-		}
-		if (input.equalsIgnoreCase("create")) {
-			controller.createNewWaypoint();
-		}
-		if (input.equalsIgnoreCase("save")) {
-			controller.saveWaypoint();
-		}
-		if (input.equalsIgnoreCase("delete")) {
-			controller.deleteWaypoint();
-		}
-		if (input.equalsIgnoreCase("select")) {
-			controller.updateWaypoint(scanner.next());
-		}
-		if (input.equalsIgnoreCase("show")) {
-			for (IWaypoint iWaypoint : controller.getWaypoints()) {
-				System.out.println(iWaypoint);
+
+		try {
+			if (input.equalsIgnoreCase("q")) {
+				continu = false;
+				controller.tearDown();
 			}
-			printTUI();
+			if (input.equalsIgnoreCase("name")) {
+				controller.setName(scanner.next());
+			}
+			if (input.equalsIgnoreCase("pos")) {
+				controller.setPosition(scanner.next());
+			}
+			if (input.equalsIgnoreCase("note")) {
+				controller.setNote(scanner.next());
+			}
+			if (input.equalsIgnoreCase("btm")) {
+				controller.setBTM(scanner.nextInt());
+			}
+			if (input.equalsIgnoreCase("dtm")) {
+				controller.setDTM(scanner.nextInt());
+			}
+			if (input.equalsIgnoreCase("cog")) {
+				controller.setCOG(scanner.nextInt());
+			}
+			if (input.equalsIgnoreCase("sog")) {
+				controller.setSOG(scanner.nextInt());
+			}
+			if (input.equalsIgnoreCase("man")) {
+				controller.setManeuver(Maneuver.valueOf(scanner.next()));
+			}
+			if (input.equalsIgnoreCase("fsail")) {
+				controller.setForesail(ForeSail.valueOf(scanner.next()));
+			}
+			if (input.equalsIgnoreCase("msail")) {
+				controller.setMainsail(MainSail.valueOf(scanner.next()));
+			}
+			if (input.equalsIgnoreCase("mark")) {
+				//			TODO: Übergabe testen, Absprache bezgl. Params
+				markTUI.processInputLine(controller.getMark().toString());
+			}
+			if (input.equalsIgnoreCase("create")) {
+				controller.createNewWaypoint();
+			}
+			if (input.equalsIgnoreCase("save")) {
+				controller.saveWaypoint();
+			}
+			if (input.equalsIgnoreCase("delete")) {
+				controller.deleteWaypoint();
+			}
+			if (input.equalsIgnoreCase("select")) {
+				controller.updateWaypoint(scanner.next());
+			}
+			if (input.equalsIgnoreCase("show")) {
+				for (IWaypoint iWaypoint : controller.getWaypoints()) {
+					System.out.println(iWaypoint);
+				}
+				printTUI();
+			}
+			scanner.close();
+		} catch (RemoteException ex) {
+
 		}
-		scanner.close();
 		return continu;
 	}
 
 	@Override
 	public void printTUI() {
-		out.println(controller.getString());
+		try {
+			out.println(controller.getString());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
 		out.println("WaypointDemo:\n" +
 				"\t\t create - creates new waypoint\n" +
 				"\t\t save   - saves all changes\n" +

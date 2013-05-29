@@ -1,6 +1,10 @@
 package de.htwg.seapal.waypoint.controller;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 
 import org.junit.After;
 import org.junit.Before;
@@ -19,76 +23,146 @@ public class ControllerTest {
 
 	@Before
 	public void setUp() {
-		controller = new WaypointController(new Waypoint());
+		try {
+			controller = new WaypointController(new Waypoint());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		} catch (NotBoundException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@After
 	public void tearDown() {
-		controller.tearDown();
+		try {
+			controller.tearDown();
+		} catch (RemoteException e) {
+			fail();
+		}
 	}
 
 	@Test
 	public void testGetName() {
-		assertEquals("MyWaypoint", controller.getName());
+		try {
+			assertEquals("MyWaypoint", controller.getName());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			fail();
+		}
 	}
 
 	@Test
 	public void testGetPosition() {
-		assertEquals("0°12'12\"E 47°12'12\"N", controller.getPosition());
+		try {
+			assertEquals("0°12'12\"E 47°12'12\"N", controller.getPosition());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			fail();
+		}
 	}
 
 	@Test
 	public void testGetNote() {
-		assertEquals("Here is a note", controller.getNote());
+		try {
+			assertEquals("Here is a note", controller.getNote());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			fail();
+		}
 	}
 
 	@Test
 	public void testGetBTM() {
-		assertEquals(0, controller.getBTM());
+		try {
+			assertEquals(0, controller.getBTM());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			fail();
+		}
 	}
 
 	@Test
 	public void testGetDTM() {
-		assertEquals(0, controller.getDTM());
+		try {
+			assertEquals(0, controller.getDTM());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			fail();
+		}
 	}
 
 	@Test
 	public void testGetCOG() {
-		assertEquals(0, controller.getCOG());
+		try {
+			assertEquals(0, controller.getCOG());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			fail();
+		}
 	}
 	@Test
 	public void testGetSOG() {
-		assertEquals(0, controller.getSOG());
+		try {
+			assertEquals(0, controller.getSOG());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			fail();
+		}
 	}
 
 	//FIXME use a correct mark
 	@Test
 	public void testGetMark() {
-		assertEquals(null, controller.getMark());
+		try {
+			assertEquals(null, controller.getMark());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			fail();
+		}
 	}
 
 	@Test
 	public void testGetForesail() {
-		assertEquals(ForeSail.NONE, controller.getForesail());
+		try {
+			assertEquals(ForeSail.NONE, controller.getForesail());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			fail();
+		}
 	}
 
 
 	@Test
 	public void testGetMainsail() {
-		assertEquals(MainSail.REEF1, controller.getMainsail());
+		try {
+			assertEquals(MainSail.REEF1, controller.getMainsail());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			fail();
+		}
 	}
 
 
 	@Test
 	public void testGetManeuver() {
-		assertEquals(Maneuver.ANKER_DOWN, controller.getManeuver());
+		try {
+			assertEquals(Maneuver.ANKER_DOWN, controller.getManeuver());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			fail();
+		}
 	}
 
 	@Test
 	public void testToString() {
-		assertEquals("Waypoint:{id=w1; name=MyWaypoint; pos=0°12'12\"E 47°12'12\"N; note=Here is a note; " +
-				"btm=0; dtm=0; cog=0; sog=0; man=ANKER_DOWN; fsail=NONE; msail=REEF1; mark=null}",
-				controller.getString());
+		try {
+			assertEquals("Waypoint:{id=w1; name=MyWaypoint; pos=0°12'12\"E 47°12'12\"N; note=Here is a note; " +
+					"btm=0; dtm=0; cog=0; sog=0; man=ANKER_DOWN; fsail=NONE; msail=REEF1; mark=null}",
+					controller.getString());
+		} catch (RemoteException e) {
+			e.printStackTrace();
+			fail();
+		}
 	}
 
 }

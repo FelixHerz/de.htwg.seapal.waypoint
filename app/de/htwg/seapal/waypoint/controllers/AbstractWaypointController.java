@@ -1,11 +1,16 @@
 package de.htwg.seapal.waypoint.controllers;
 
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
 import com.google.inject.Singleton;
 
+import de.htwg.seapal.mark.controllers.IMarkController;
 import de.htwg.seapal.waypoint.database.IWaypointDatabase;
 import de.htwg.seapal.waypoint.database.impl.WaypointDB4ODatabase;
 import de.htwg.seapal.waypoint.models.IWaypoint;
@@ -13,6 +18,7 @@ import de.htwg.seapal.waypoint.models.IWaypoint.ForeSail;
 import de.htwg.seapal.waypoint.models.IWaypoint.MainSail;
 import de.htwg.seapal.waypoint.models.IWaypoint.Maneuver;
 import de.htwg.seapal.waypoint.models.impl.Waypoint;
+import de.htwg.util.observer.IObservable;
 import de.htwg.util.observer.Observable;
 
 /**
@@ -22,7 +28,7 @@ import de.htwg.util.observer.Observable;
  */
 @Singleton
 public class AbstractWaypointController extends Observable
-implements IWaypointController {
+implements IWaypointController, IObservable {
 
 	private static final int MAX_RANDOM_ID = 9999;
 
@@ -32,15 +38,22 @@ implements IWaypointController {
 	/** Controller handeling the persistence. */
 	private final IWaypointDatabase persistenceController;
 
+	private final IMarkController markController;
+
 
 	/**
 	 * Creates an instance with a waypoint. Only for generalized classes.
 	 * @param pWaypoint the waypoint.
+	 * @throws RemoteException
+	 * @throws NotBoundException
 	 */
-	protected AbstractWaypointController(final IWaypoint pWaypoint) {
+	protected AbstractWaypointController(final IWaypoint pWaypoint) throws RemoteException, NotBoundException {
 		this.waypoint = pWaypoint;
 		persistenceController = new WaypointDB4ODatabase();
 		persistenceController.open("waypoint.data");
+
+		Registry registry = LocateRegistry.getRegistry("141.37.81.97");
+		markController = (IMarkController) registry.lookup("Seapal_Mark");
 	}
 
 	/** (non-Javadoc).
@@ -154,7 +167,6 @@ implements IWaypointController {
 
 	@Override
 	public final void setMark(final String markId) {
-		//TODO not implemented at all
 		throw new UnsupportedOperationException("Not implemented yet");
 	}
 
