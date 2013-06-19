@@ -1,6 +1,6 @@
 package de.htwg.seapal.waypoint.models.impl;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +13,7 @@ import de.htwg.seapal.waypoint.models.IWaypoint.Maneuver;
 public class WaypointTest {
 
 	private IWaypoint waypoint;
-	
+
 	@Before
 	public void setUp() throws Exception {
 		waypoint = new Waypoint();
@@ -27,38 +27,19 @@ public class WaypointTest {
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testNameEmpty() {
-			waypoint.setName("");
+		waypoint.setName("");
 	}
 
 	@Test(expected = IllegalArgumentException.class)
 	public void testNameNull() {
-			waypoint.setName(null);
+		waypoint.setName(null);
 	}
 
 
 	@Test
 	public void testPosition() {
-		waypoint.setPosition("0°12'12\"E 47°12'12\"N");
-		assertEquals("0°12'12\"E 47°12'12\"N", waypoint.getPosition());
-		
+	}
 
-		waypoint.setPosition("0°12'E 47°12'N");
-		assertEquals("0°12'E 47°12'N", waypoint.getPosition());
-		
-
-		waypoint.setPosition("0°E 47°N");
-		assertEquals("0°E 47°N", waypoint.getPosition());
-	}
-	
-	@Test(expected = IllegalArgumentException.class)
-	public void testPositionWrong() {
-		waypoint.setPosition("0°12'12\"E ");
-	}
-	
-	@Test(expected = IllegalArgumentException.class)
-	public void testPositionNull() {
-		waypoint.setPosition(null);
-	}
 
 	@Test
 	public void testNote() {
@@ -78,13 +59,13 @@ public class WaypointTest {
 	@Test
 	public void testSOG() {
 	}
-	
+
 	//FIXME use a correct mark
 	@Test
 	public void testMark() {
 	}
 
-	
+
 	@Test
 	public void testForesail() {
 		waypoint.setForesail(ForeSail.FOCK);
@@ -106,7 +87,7 @@ public class WaypointTest {
 	public void testMainsailNull() {
 		waypoint.setMainsail(null);
 	}
-	
+
 
 	@Test
 	public void testManeuver() {
@@ -125,7 +106,7 @@ public class WaypointTest {
 		//		"btm=0; dtm=0; cog=0; sog=0; man=ANKER_DOWN; fsail=NONE; msail=REEF1; mark=null}",
 		//		waypoint.toString());
 	}
-	
+
 
 
 }

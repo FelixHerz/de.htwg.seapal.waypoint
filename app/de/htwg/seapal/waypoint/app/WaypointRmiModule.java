@@ -1,5 +1,8 @@
 package de.htwg.seapal.waypoint.app;
 
+import views.tui.states.StateFactory;
+import views.tui.states.StateFactoryImpl;
+
 import com.google.inject.AbstractModule;
 import com.google.inject.name.Names;
 
@@ -22,6 +25,7 @@ public class WaypointRmiModule extends AbstractModule {
 		bind(String.class)
 		.annotatedWith(Names.named("ServerName"))
 		.toInstance("localhost");
+		bind(StateFactory.class).to(StateFactoryImpl.class);
 	}
 
 }

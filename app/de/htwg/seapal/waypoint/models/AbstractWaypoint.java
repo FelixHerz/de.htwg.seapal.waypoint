@@ -5,6 +5,7 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public abstract class AbstractWaypoint implements IWaypoint {
 
+	private static final long serialVersionUID = -5689749052279406754L;
 
 	protected AbstractWaypoint() {}
 
@@ -18,7 +19,8 @@ public abstract class AbstractWaypoint implements IWaypoint {
 		StringBuilder sb = new StringBuilder("{");
 		sb.append("id=").append(getId())
 		.append("; name=").append(getName())
-		.append("; pos=").append(getPosition())
+		.append("; lat=").append(getLatitude())
+		.append("; lng=").append(getLongitude())
 		.append("; note=").append(getNote())
 		.append("; btm=").append(getBtm())
 		.append("; dtm=").append(getDtm())
@@ -47,7 +49,8 @@ public abstract class AbstractWaypoint implements IWaypoint {
 				getId().equals(other.getId())
 				&& getName().equals(other.getName())
 				&& getNote().equals(other.getNote())
-				&& getPosition().equals(other.getPosition())
+				&& getLatitude() == other.getLatitude()
+				&& getLongitude() == other.getLongitude()
 				&& getBtm() == other.getBtm()
 				&& getDtm() == other.getDtm()
 				&& getCog() == other.getCog()

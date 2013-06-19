@@ -37,9 +37,18 @@ public class WaypointRmiForwarder extends Observable implements IWaypointControl
 	}
 
 	@Override
-	public String getPosition() {
+	public double getLatitude() {
 		try {
-			return rmiReceiver.getPosition();
+			return rmiReceiver.getLatitude();
+		} catch (RemoteException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public double getLongitude() {
+		try {
+			return rmiReceiver.getLongitude();
 		} catch (RemoteException e) {
 			throw new RuntimeException(e);
 		}
@@ -137,9 +146,9 @@ public class WaypointRmiForwarder extends Observable implements IWaypointControl
 	}
 
 	@Override
-	public void setPosition(final String position) {
+	public void setLatitude(final double lat) {
 		try {
-			rmiReceiver.setPosition(position);
+			rmiReceiver.setLatitude(lat);
 			notifyObservers();
 		} catch (RemoteException e) {
 			throw new RuntimeException(e);
@@ -150,26 +159,6 @@ public class WaypointRmiForwarder extends Observable implements IWaypointControl
 	public void setNote(final String note) {
 		try {
 			rmiReceiver.setNote(note);
-			notifyObservers();
-		} catch (RemoteException e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	@Override
-	public void setBTM(final int btm) {
-		try {
-			rmiReceiver.setBTM(btm);
-			notifyObservers();
-		} catch (RemoteException e) {
-			throw new RuntimeException(e);
-		}
-	}
-
-	@Override
-	public void setDTM(final int dtm) {
-		try {
-			rmiReceiver.setDTM(dtm);
 			notifyObservers();
 		} catch (RemoteException e) {
 			throw new RuntimeException(e);
@@ -308,6 +297,25 @@ public class WaypointRmiForwarder extends Observable implements IWaypointControl
 			throw new RuntimeException(e);
 		}
 
+	}
+
+	@Override
+	public void setLongitude(final double lng) {
+		try {
+			rmiReceiver.setLongitude(lng);
+			notifyObservers();
+		} catch (RemoteException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public void selectWaypoint(final String id) {
+		try {
+			rmiReceiver.selectWaypoint(id);
+		} catch (RemoteException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 

@@ -1,5 +1,8 @@
 package de.htwg.seapal.waypoint.app;
 
+import views.tui.states.StateFactory;
+import views.tui.states.StateFactoryImpl;
+
 import com.google.inject.AbstractModule;
 
 import de.htwg.seapal.waypoint.controllers.IWaypointController;
@@ -21,5 +24,6 @@ public class WaypointMockModule extends AbstractModule {
 		bind(IWaypoint.class).to(Waypoint.class);
 		bind(IWaypointController.class).to(WaypointController.class);
 		bind(IWaypointDatabase.class).to(WaypointDB4ODatabase.class);
+		bind(StateFactory.class).to(StateFactoryImpl.class);
 	}
 }

@@ -27,7 +27,13 @@ public interface IWaypointController extends IObservable {
 	 * Returns the position as string of the waypoint.
 	 * @return the position.
 	 */
-	String getPosition();
+	double getLatitude();
+
+	/**
+	 * Returns the position as string of the waypoint.
+	 * @return the position.
+	 */
+	double getLongitude();
 
 	/**
 	 * Returns the Note of the waypoint.
@@ -92,27 +98,22 @@ public interface IWaypointController extends IObservable {
 
 	/**
 	 * Sets the position.
-	 * @param position the position
+	 * @param lat the position
 	 */
-	void setPosition(String position);
+	void setLatitude(double lat);
+
+
+	/**
+	 * Sets the position.
+	 * @param lat the position
+	 */
+	void setLongitude(double lng);
 
 	/**
 	 * Sets the note.
 	 * @param note the note
 	 */
 	void setNote(String note);
-
-	/**
-	 * Sets the Baring To Mark in degrees.
-	 * @param btm Baring To Mark
-	 */
-	void setBTM(int btm);
-
-	/**
-	 * Sets the Distance To Mark.
-	 * @param dtm Distance To Mark
-	 */
-	void setDTM(int dtm);
 
 	/**
 	 * Sets the Course Over Ground in degrees.
@@ -184,6 +185,12 @@ public interface IWaypointController extends IObservable {
 	 * Saves the changes to the currently selected waypoint.
 	 */
 	void saveWaypoint();
+
+
+	/**
+	 * Saves the changes to the currently selected waypoint.
+	 */
+	void selectWaypoint(String id);
 
 	/**
 	 * Gets a list of all waypoints.

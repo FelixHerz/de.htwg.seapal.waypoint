@@ -28,7 +28,13 @@ public interface IRmiWaypointController extends Remote {
 	 * Returns the position as string of the waypoint.
 	 * @return the position.
 	 */
-	String getPosition() throws RemoteException;
+	double getLatitude() throws RemoteException;
+
+	/**
+	 * Returns the position as string of the waypoint.
+	 * @return the position.
+	 */
+	double getLongitude() throws RemoteException;
 
 	/**
 	 * Returns the Note of the waypoint.
@@ -93,27 +99,15 @@ public interface IRmiWaypointController extends Remote {
 
 	/**
 	 * Sets the position.
-	 * @param position the position
+	 * @param latitude the position
 	 */
-	void setPosition(String position) throws RemoteException;
+	void setLatitude(double latitude) throws RemoteException;
 
 	/**
 	 * Sets the note.
 	 * @param note the note
 	 */
 	void setNote(String note) throws RemoteException;
-
-	/**
-	 * Sets the Baring To Mark in degrees.
-	 * @param btm Baring To Mark
-	 */
-	void setBTM(int btm) throws RemoteException;
-
-	/**
-	 * Sets the Distance To Mark.
-	 * @param dtm Distance To Mark
-	 */
-	void setDTM(int dtm) throws RemoteException;
 
 	/**
 	 * Sets the Course Over Ground in degrees.
@@ -195,4 +189,8 @@ public interface IRmiWaypointController extends Remote {
 	 * Closes database connection and other open resources.
 	 */
 	void tearDown() throws RemoteException;
+
+	void setLongitude(double lng) throws RemoteException;
+
+	void selectWaypoint(String id) throws RemoteException;
 }

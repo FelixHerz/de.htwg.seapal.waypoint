@@ -26,7 +26,7 @@ public class WaypointTest {
 
 	@Test
 	public void testGetPosition() {
-		assertEquals("0°12'12\"E 47°12'12\"N", waypoint.getPosition());
+		assertEquals("0°12'12\"E 47°12'12\"N", waypoint.getLatitude());
 	}
 
 	@Test

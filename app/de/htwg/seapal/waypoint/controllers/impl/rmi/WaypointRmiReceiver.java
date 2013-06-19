@@ -13,10 +13,10 @@ import de.htwg.seapal.waypoint.models.IWaypoint.Maneuver;
 
 public class WaypointRmiReceiver implements IRmiWaypointController {
 
-	private IWaypointController controller;
-	
+	private final IWaypointController controller;
+
 	@Inject
-	public WaypointRmiReceiver(IWaypointController controller) {
+	public WaypointRmiReceiver(final IWaypointController controller) {
 		this.controller = controller;
 	}
 
@@ -26,8 +26,13 @@ public class WaypointRmiReceiver implements IRmiWaypointController {
 	}
 
 	@Override
-	public String getPosition() throws RemoteException {
-		return controller.getPosition();
+	public double getLatitude() throws RemoteException {
+		return controller.getLatitude();
+	}
+
+	@Override
+	public double getLongitude() throws RemoteException {
+		return controller.getLatitude();
 	}
 
 	@Override
@@ -81,23 +86,18 @@ public class WaypointRmiReceiver implements IRmiWaypointController {
 	}
 
 	@Override
-	public void setPosition(final String position) throws RemoteException {
-		controller.setPosition(position);
+	public void setLatitude(final double latitude) throws RemoteException {
+		controller.setLatitude(latitude);
+	}
+
+	@Override
+	public void setLongitude(final double lng) throws RemoteException {
+		controller.setLongitude(lng);
 	}
 
 	@Override
 	public void setNote(final String note) throws RemoteException {
 		controller.setNote(note);
-	}
-
-	@Override
-	public void setBTM(final int btm) throws RemoteException {
-		controller.setBTM(btm);
-	}
-
-	@Override
-	public void setDTM(final int dtm) throws RemoteException {
-		controller.setDTM(dtm);
 	}
 
 	@Override
@@ -163,6 +163,11 @@ public class WaypointRmiReceiver implements IRmiWaypointController {
 	@Override
 	public void tearDown() throws RemoteException {
 		controller.tearDown();
+	}
+
+	@Override
+	public void selectWaypoint(final String id) throws RemoteException {
+		controller.selectWaypoint(id);
 	}
 
 }

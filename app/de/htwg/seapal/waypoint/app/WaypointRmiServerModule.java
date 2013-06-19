@@ -16,7 +16,7 @@ import de.htwg.seapal.waypoint.models.impl.Waypoint;
  * @author Felix
  *
  */
-public class WaypointRmilModule extends AbstractModule {
+public class WaypointRmiServerModule extends AbstractModule {
 
 	@Override
 	protected void configure() {

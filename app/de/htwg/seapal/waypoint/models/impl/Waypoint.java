@@ -26,7 +26,10 @@ public class Waypoint extends AbstractWaypoint {
 	private String name = "";
 
 	@Column
-	private String position = "";
+	private double latitude = 0;
+
+	@Column
+	private double longitude = 0;
 
 	@Column
 	private String note = "";
@@ -63,7 +66,7 @@ public class Waypoint extends AbstractWaypoint {
 	public Waypoint() {
 		id = Math.random() * 99999 + "";
 		name = "Waypoint";
-		position = "0°E 0°N";
+		latitude = 0;
 		note = "";
 		maneuver = Maneuver.NONE;
 		foresail = ForeSail.NONE;
@@ -78,7 +81,8 @@ public class Waypoint extends AbstractWaypoint {
 		super(waypoint);
 		setId(waypoint.getId());
 		setName(waypoint.getName());
-		setPosition(waypoint.getPosition());
+		setLatitude(waypoint.getLatitude());
+		setLongitude(waypoint.getLongitude());
 		setNote(waypoint.getNote());
 		setBtm(waypoint.getBtm());
 		setDtm(waypoint.getDtm());
@@ -117,8 +121,8 @@ public class Waypoint extends AbstractWaypoint {
 	 */
 
 	@Override
-	public String getPosition() {
-		return position;
+	public double getLatitude() {
+		return latitude;
 	}
 
 	/* (non-Javadoc)
@@ -229,16 +233,8 @@ public class Waypoint extends AbstractWaypoint {
 	 * @see models.impls.IWaypoint#setPosition(java.lang.String)
 	 */
 	@Override
-	public void setPosition(final String position) {
-		if (position == null || position.equals("")) {
-			throw new IllegalArgumentException();
-		}
-		String trimmedposition = position.trim();
-		if (!trimmedposition.matches("((1[0-8][0-9])|(0?\\d{0,2}))°(\\d{1,2}')?(\\d{1,2}\")?[E|W]\\s?" +
-				"((90)|([0-8]\\d|\\d))°(\\d{1,2}')?(\\d{1,2}\")?[N|S]")) {
-			throw new IllegalArgumentException(position);
-		}
-		this.position = trimmedposition;
+	public void setLatitude(final double lat) {
+		this.latitude = lat;
 	}
 
 	/* (non-Javadoc)
@@ -319,6 +315,16 @@ public class Waypoint extends AbstractWaypoint {
 	@Override
 	public Object clone() throws CloneNotSupportedException {
 		return new Waypoint(this);
+	}
+
+	@Override
+	public double getLongitude() {
+		return longitude;
+	}
+
+	@Override
+	public void setLongitude(final double lng) {
+		this.longitude = lng;
 	}
 
 }

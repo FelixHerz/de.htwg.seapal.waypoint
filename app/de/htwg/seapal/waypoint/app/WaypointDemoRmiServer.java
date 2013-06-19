@@ -21,6 +21,14 @@ import de.htwg.seapal.waypoint.controllers.impl.rmi.IRmiWaypointController;
 /**
  * A executable Demo application for Waypoint.
  * @author Felix
+ * 
+ * @startuml
+IWaypointController <|.. WaypointRMIForwarder
+RMIReceiver <.. WaypointRMIForwarder
+RMIReceiver ..|> IRMIWaypointController
+RMIReceiver ..> Controller
+Controller ..|> IWaypointController
+@enduml
  *
  */
 public final class WaypointDemoRmiServer {
@@ -44,7 +52,7 @@ public final class WaypointDemoRmiServer {
 		try {
 			// Set up Google Guice Dependency Injector
 			Injector injector = Guice.createInjector(
-					new WaypointRmilModule(),
+					new WaypointRmiServerModule(),
 					new MarkImplModule());
 
 			IRmiWaypointController rmiController = injector.getInstance(IRmiWaypointController.class);

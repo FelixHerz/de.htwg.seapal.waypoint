@@ -20,7 +20,8 @@ create table mark (
 create table waypoint (
   id                        varchar(255) not null,
   name                      varchar(255),
-  position                  varchar(255),
+  latitude                  double,
+  longitude                 double,
   note                      varchar(255),
   btm                       integer,
   dtm                       integer,

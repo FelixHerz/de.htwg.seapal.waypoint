@@ -32,8 +32,8 @@ public class Waypoint extends AbstractWaypoint {
 	}
 
 	@Override
-	public String getPosition() {
-		return "0°12'12\"E 47°12'12\"N";
+	public double getLatitude() {
+		return 0;
 	}
 
 	@Override
@@ -103,7 +103,7 @@ public class Waypoint extends AbstractWaypoint {
 	}
 
 	@Override
-	public void setPosition(final String position) {
+	public void setLatitude(final double lat) {
 
 	}
 
@@ -149,6 +149,16 @@ public class Waypoint extends AbstractWaypoint {
 
 	@Override
 	public void setId(final String id) {
+
+	}
+
+	@Override
+	public double getLongitude() {
+		return 0;
+	}
+
+	@Override
+	public void setLongitude(final double lng) {
 
 	}
 

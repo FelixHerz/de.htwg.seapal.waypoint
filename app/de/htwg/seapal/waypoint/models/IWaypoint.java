@@ -27,13 +27,11 @@ public interface IWaypoint extends Cloneable, Serializable {
 	 * Returns the position of the waypoint.
 	 * @return the position
 	 */
-	String getPosition();
+	double getLatitude();
+
+	double getLongitude();
 
 	String getNote();
-
-	int getBtm();
-
-	int getDtm();
 
 	int getCog();
 
@@ -51,13 +49,10 @@ public interface IWaypoint extends Cloneable, Serializable {
 
 	void setName(String name);
 
-	void setPosition(String position);
+	void setLatitude(double lat);
+	void setLongitude(double lng);
 
 	void setNote(String note);
-
-	void setBtm(int btm);
-
-	void setDtm(int dtm);
 
 	void setCog(int cog);
 
@@ -74,4 +69,12 @@ public interface IWaypoint extends Cloneable, Serializable {
 	String getId();
 
 	Object clone() throws CloneNotSupportedException;
+
+	int getBtm();
+
+	int getDtm();
+
+	void setDtm(int dtm);
+
+	void setBtm(int btm);
 }
