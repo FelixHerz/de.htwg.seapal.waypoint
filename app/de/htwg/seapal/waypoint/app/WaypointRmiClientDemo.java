@@ -19,10 +19,10 @@ import de.htwg.seapal.mark.app.MarkImplModule;
  * @author Felix
  *
  */
-public final class WaypointDemo {
+public final class WaypointRmiClientDemo {
 
 	/** Silent checkstyle. */
-	private WaypointDemo() { }
+	private WaypointRmiClientDemo() { }
 
 	/**
 	 * Silent checkstyle.
@@ -34,12 +34,13 @@ public final class WaypointDemo {
 
 		// Initialize Play Application to use the play environment functions...
 		Application play = new DefaultApplication(
-				new File("."), WaypointDemo.class.getClassLoader(), null, Mode.Dev());
+				new File("."), WaypointRmiClientDemo.class.getClassLoader(), null, Mode.Dev());
 		Play.start(play);
 
 		try {
 			// Set up Google Guice Dependency Injector
-			Injector injector = Guice.createInjector(new WaypointImplModule(),
+			Injector injector = Guice.createInjector(
+					new WaypointRmiModule(),
 					new MarkImplModule());
 
 			/* Build up the application, resolving dependencies

@@ -1,7 +1,9 @@
 package de.htwg.seapal.waypoint.models;
 
+import java.io.Serializable;
 
-public interface IWaypoint extends Cloneable {
+
+public interface IWaypoint extends Cloneable, Serializable {
 
 	public enum Maneuver {
 		NONE, TACK, JIBE, LAYTO, SET_SAILS, CHANGE_SAILS, SAILS_DOWN, REFF, ANKER_UP, ANKER_DOWN

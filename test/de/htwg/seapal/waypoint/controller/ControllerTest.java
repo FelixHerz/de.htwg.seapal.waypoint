@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import de.htwg.seapal.waypoint.controllers.IWaypointController;
 import de.htwg.seapal.waypoint.controllers.impl.WaypointController;
+import de.htwg.seapal.waypoint.database.impl.WaypointDB4ODatabase;
 import de.htwg.seapal.waypoint.models.IWaypoint.ForeSail;
 import de.htwg.seapal.waypoint.models.IWaypoint.MainSail;
 import de.htwg.seapal.waypoint.models.IWaypoint.Maneuver;
@@ -19,7 +20,7 @@ public class ControllerTest {
 
 	@Before
 	public void setUp() {
-		controller = new WaypointController(new Waypoint());
+		controller = new WaypointController(new Waypoint(), new WaypointDB4ODatabase());
 	}
 
 	@After

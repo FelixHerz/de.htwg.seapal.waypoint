@@ -6,14 +6,13 @@ import java.util.Random;
 
 import com.google.inject.Singleton;
 
+import de.htwg.seapal.common.observer.Observable;
 import de.htwg.seapal.waypoint.database.IWaypointDatabase;
-import de.htwg.seapal.waypoint.database.impl.WaypointDB4ODatabase;
 import de.htwg.seapal.waypoint.models.IWaypoint;
 import de.htwg.seapal.waypoint.models.IWaypoint.ForeSail;
 import de.htwg.seapal.waypoint.models.IWaypoint.MainSail;
 import de.htwg.seapal.waypoint.models.IWaypoint.Maneuver;
 import de.htwg.seapal.waypoint.models.impl.Waypoint;
-import de.htwg.util.observer.Observable;
 
 /**
  * Implements the common default behaviour.
@@ -21,7 +20,7 @@ import de.htwg.util.observer.Observable;
  *
  */
 @Singleton
-public class AbstractWaypointController extends Observable
+public abstract class AbstractWaypointController extends Observable
 implements IWaypointController {
 
 	private static final int MAX_RANDOM_ID = 9999;
@@ -37,9 +36,9 @@ implements IWaypointController {
 	 * Creates an instance with a waypoint. Only for generalized classes.
 	 * @param pWaypoint the waypoint.
 	 */
-	protected AbstractWaypointController(final IWaypoint pWaypoint) {
+	protected AbstractWaypointController(final IWaypoint pWaypoint, final IWaypointDatabase persistenceController) {
 		this.waypoint = pWaypoint;
-		persistenceController = new WaypointDB4ODatabase();
+		this.persistenceController = persistenceController;
 		persistenceController.open("waypoint.data");
 	}
 
@@ -154,8 +153,7 @@ implements IWaypointController {
 
 	@Override
 	public final void setMark(final String markId) {
-		//TODO not implemented at all
-		throw new UnsupportedOperationException("Not implemented yet");
+		waypoint.setMark(markId);
 	}
 
 	@Override

@@ -6,15 +6,15 @@ import java.util.Scanner;
 
 import com.google.inject.Inject;
 
+import de.htwg.seapal.common.observer.Event;
+import de.htwg.seapal.common.observer.IObserver;
+import de.htwg.seapal.common.plugin.Plugin;
 import de.htwg.seapal.mark.views.tui.MarkTUI;
 import de.htwg.seapal.waypoint.controllers.IWaypointController;
 import de.htwg.seapal.waypoint.models.IWaypoint;
 import de.htwg.seapal.waypoint.models.IWaypoint.ForeSail;
 import de.htwg.seapal.waypoint.models.IWaypoint.MainSail;
 import de.htwg.seapal.waypoint.models.IWaypoint.Maneuver;
-import de.htwg.util.observer.Event;
-import de.htwg.util.observer.IObserver;
-import de.htwg.util.plugin.Plugin;
 
 public class WaypointTUI implements IObserver, Plugin {
 

@@ -10,6 +10,8 @@ import de.htwg.seapal.waypoint.models.IWaypoint;
  */
 public class Waypoint extends AbstractWaypoint {
 
+	private static final long serialVersionUID = -6220038184796486178L;
+
 	/**
 	 * Creates a new waypoint mock.
 	 */

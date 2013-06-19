@@ -17,6 +17,8 @@ import de.htwg.seapal.waypoint.models.AbstractWaypoint;
 @Entity
 public class Waypoint extends AbstractWaypoint {
 
+	private static final long serialVersionUID = -2570545959230020028L;
+
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private String id;
 
